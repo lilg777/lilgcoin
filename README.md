@@ -1,4 +1,6 @@
 # LiLGcoin (LGX / ₲)
+![LiLGcoin 400x400](https://user-images.githubusercontent.com/84663216/120458674-15cc0880-c35d-11eb-8fd0-51a69c2d5743.jpg)
+
 
 **LiLGcoin** is a peer-to-peer cryptocurrency created by **LGXatoshi** in 2020 and officially launched on **October 30, 2021** on the **Binance Smart Chain (BSC)**.
 
