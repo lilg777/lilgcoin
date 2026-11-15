@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LiLGcoin White Paper - Open source P2P money</title>
-<meta name="description" content="LiLGcoin (LGX or ₲) whitepaper: a peer-to-peer cryptocurrency on the Binance Smart Chain, created by LGXatoshi and launched October 30, 2021.">
+<meta name="description" content="LiLGcoin (LGX or ₲) whitepaper: a peer-to-peer cryptocurrency and open-source software project by LGXatoshi.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
@@ -17,15 +17,24 @@
   .nav a { color: #555; font-size: 15px; }
   .nav a:hover { color: #c89300; }
   .nav a.active { color: #c89300; font-weight: 700; }
-  .paper { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
-  .paper h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 40px; }
+  .paper { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+  .paper h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 8px; }
+  .paper .byline { text-align: center; color: #666; font-size: 16px; margin-bottom: 36px; }
+  .paper .byline a { color: #666; }
   .paper h2 { font-size: 24px; color: #222; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #eee; }
-  .paper h2:first-of-type { border-top: none; padding-top: 0; }
   .paper p, .paper li { color: #444; font-size: 17px; }
   .paper p { margin-bottom: 14px; }
   .paper ul { padding-left: 22px; }
   .paper li { margin-bottom: 8px; }
   .paper li strong { color: #222; }
+  .paper figure { margin: 28px 0; text-align: center; }
+  .paper figure img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e5e5; }
+  .paper figure.cover img { max-width: 480px; }
+  .paper blockquote { border-left: 3px solid #c89300; padding: 4px 0 4px 18px; margin: 20px 0; color: #555; font-style: italic; font-size: 17px; }
+  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px 24px; margin-top: 16px; }
+  .team .member { text-align: center; padding: 14px 8px; border: 1px solid #eee; border-radius: 8px; }
+  .team .member strong { display: block; color: #222; font-size: 17px; }
+  .team .member span { color: #666; font-size: 15px; }
   footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
   .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
   footer p { color: #999; font-size: 14px; }
@@ -44,61 +53,50 @@
 </header>
 
 <div class="paper">
+  <figure class="cover"><img src="whitepaper-cover.jpg" alt="LiLGcoin Whitepaper cover"></figure>
   <h1>LiLGcoin (LGX / ₲) — Whitepaper</h1>
+  <p class="byline">LGXatoshi<br><a href="mailto:lilgcoinx@gmail.com">lilgcoinx@gmail.com</a><br><a href="https://www.lilgcoin.org">www.lilgcoin.org</a></p>
 
-  <h2>Introduction</h2>
-  <p>LiLGcoin (LGX / ₲) is a peer-to-peer cryptocurrency created by <strong>LGXatoshi</strong> in 2020 and officially launched on <strong>October 30, 2021</strong> on the <strong>Binance Smart Chain (BSC)</strong>.</p>
-  <p>It was born from a vision of minimalism, transparency, and cultural authenticity — a coin that exists not for hype or speculation, but for meaning and peer-to-peer freedom.</p>
+  <h2>1. Introduction</h2>
+  <p><strong>LiLGcoin (LGX or ₲)</strong> is a peer-to-peer cryptocurrency and open-source software project. <strong>LiLGcoin</strong> is the first crypto by a musician. <strong>LiLGcoin</strong> was inspired by <strong>Bitcoin</strong>, <strong>Dogecoin</strong>, <strong>Ethereum</strong> and <strong>Tron</strong>. It shares many similarities with <strong>Wrapped Bitcoin</strong> and is based on <strong>Wrapped Bitcoin's</strong> original source code. <strong>LiLGcoin</strong> was designed to be used for cheaper transactions and to be more efficient for everyday use.</p>
+  <figure><img src="whitepaper-intro.jpg" alt="HODLER vs Panic Seller"></figure>
 
-  <h2>Philosophy</h2>
-  <ul>
-    <li><strong>Community First:</strong> LiLGcoin prioritizes people, not profits.</li>
-    <li><strong>Transparency:</strong> All contracts, liquidity, and governance are public.</li>
-    <li><strong>Minimalism:</strong> Code and policies remain simple and efficient.</li>
-    <li><strong>Resilience:</strong> Built to last, without reliance on external hype.</li>
-  </ul>
+  <h2>2. Blockchain</h2>
+  <p>The <strong>LiLGcoin</strong> blockchain is capable of handling higher transaction volume than its counterpart - <strong>Bitcoin</strong>. Due to more frequent block generation, the network supports more transactions without a need to modify the software in the future. As a result, merchants get faster confirmation times, while still having the ability to wait for more confirmations when selling bigger ticket items.</p>
+  <blockquote>The computer can be used as a tool to liberate and protect people, rather than to control them - Hal Finney (R.I.P)</blockquote>
+  <figure><img src="whitepaper-blockchain.jpg" alt="Blockchain - Hal Finney quote"></figure>
 
-  <h2>Token Identity</h2>
-  <ul>
-    <li><strong>Name:</strong> LiLGcoin</li>
-    <li><strong>Ticker:</strong> LGX</li>
-    <li><strong>Symbol:</strong> ₲</li>
-    <li><strong>Blockchain:</strong> Binance Smart Chain (BSC)</li>
-    <li><strong>Launch Date:</strong> October 30, 2021</li>
-    <li><strong>Founder:</strong> LGXatoshi</li>
-  </ul>
+  <h2>3. Transaction Speed Time</h2>
+  <p>On the <strong>Ethereum</strong> blockchain's faster average block time — about 15 seconds vs 10 minutes respectively — increases the speed with which <strong>LGX</strong> can be transacted, compared to <strong>Bitcoin</strong>.</p>
 
-  <h2>Tokenomics (High-Level)</h2>
-  <ul>
-    <li><strong>Total Supply:</strong> Fixed at launch (no hidden inflation).</li>
-    <li><strong>Founder Vault (LGXatoshi):</strong> Buy-and-send-only, never sells.</li>
-    <li><strong>Operations Wallet (LGXF):</strong> Transparent funding for growth and outreach.</li>
-    <li><strong>Liquidity Pools:</strong> Managed through v3 positions with NFT custody.</li>
-    <li><strong>Fees:</strong> LP fees remain in pools to deepen liquidity.</li>
-  </ul>
+  <h2>4. LiLGcoin Wallet/ Card</h2>
+  <p><strong>LiLGcoin</strong> plans to be the first crypto to offer a specific cold wallet made for <strong>LGX</strong> and your other crypto assets. Also, <strong>LGX</strong> debit/ credit card for spending in the future.</p>
+  <figure><img src="whitepaper-wallet.jpg" alt="Transaction speed and LiLGcoin Wallet/Card"></figure>
 
-  <h2>Governance</h2>
-  <p>Governance is maintained by the <strong>LiLGcoin Foundation (LGXF)</strong>, with roles distributed across development, strategy, and community outreach. Final authority for continuity resides in the <strong>Founder Vault (LGXatoshi)</strong> to preserve the mission and protect against hostile takeovers.</p>
+  <h2>5. LGX Crypto Exchange</h2>
+  <p>In the near future, we plan on creating the <strong>LGX Crypto Exchange</strong> where merchants can swap <strong>LiLGcoin</strong> for other DeFi projects and <strong>LGX Rare Gems</strong> possibly worth 10-1000x more than <strong>LiLGcoin</strong> itself.</p>
 
-  <h2>Use Cases</h2>
-  <ul>
-    <li><strong>Peer-to-Peer Transactions:</strong> Fast, low-fee transfers on BSC.</li>
-    <li><strong>Community Value:</strong> A shared cultural identity rooted in transparency.</li>
-    <li><strong>Liquidity Growth:</strong> Strengthened by long-term staking and pooling.</li>
-    <li><strong>Non-Security Model:</strong> Designed to operate as a utility, not a speculative security.</li>
-  </ul>
+  <h2>6. LGX Gaming</h2>
+  <p>With the possibilities of gaming in the future, we will create a game where merchants can earn <strong>LiLGcoin</strong> by doing daily tasks and playing casino games.</p>
+  <figure><img src="whitepaper-exchange.jpg" alt="LGX Crypto Exchange and LGX Gaming"></figure>
 
-  <h2>Roadmap (High-Level)</h2>
-  <ul>
-    <li><strong>2020:</strong> Research &amp; code experiments.</li>
-    <li><strong>2021:</strong> Testnet → BSC launch.</li>
-    <li><strong>2022–2023:</strong> Team growth, exchange outreach, airdrops.</li>
-    <li><strong>2024:</strong> Governance clarified, liquidity health dashboards.</li>
-    <li><strong>2025+:</strong> Expansion of LP strategies, cultural development, and ecosystem partnerships.</li>
-  </ul>
+  <h2>7. Liquidity</h2>
+  <p>Using eligible exchanges merchants will be able to earn yields from <strong>LiLGcoin</strong> transaction fees by becoming a liquidity provider using whichever DeFi project they like.</p>
 
-  <h2>Closing Statement</h2>
-  <p>LiLGcoin is not just a cryptocurrency — it is a <strong>culture, a community, and a code-born movement</strong>. Built in the shadows of a noisy industry, it stands as a quiet, resilient alternative: <strong>anti-hype, peer-to-peer, and transparent to its core.</strong></p>
+  <h2>4. LiLGcoin Network Security</h2>
+  <p><strong>LGX</strong> tokens are secured by the parent blockchain they run on — <strong>Ethereum/Binance</strong>. In turn, <strong>BNB</strong> is protected by the <strong>Ethash</strong> proof-of-work function, a representative of the <strong>Keccak</strong> family of hash functions.</p>
+  <figure><img src="whitepaper-liquidity.jpg" alt="Liquidity and LiLGcoin Network Security"></figure>
+
+  <h2>LiLGcoin Development Team</h2>
+  <div class="team">
+    <div class="member"><strong>LGXatoshi</strong><span>Chief Executive Officer</span></div>
+    <div class="member"><strong>Roger Fleury</strong><span>Mission Organizer</span></div>
+    <div class="member"><strong>Victor Bermudez</strong><span>Chief Operating Officer</span></div>
+    <div class="member"><strong>Preet Tiwana</strong><span>Marketing</span></div>
+    <div class="member"><strong>Victor Faluyi</strong><span>Marketing</span></div>
+    <div class="member"><strong>Daniel DeWitt</strong><span>Chief Technologist</span></div>
+  </div>
+  <figure><img src="whitepaper-team.jpg" alt="LiLGcoin Development Team"></figure>
 </div>
 
 <footer>
