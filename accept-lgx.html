@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accept LiLGcoin - Open source P2P money</title>
+<meta name="description" content="A step-by-step guide for merchants: how to accept LiLGcoin (LGX or ₲) from your customers — cheaper transactions, faster confirmations, no bank in the middle.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+  .page { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
+  .page h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 12px; }
+  .page .lede { text-align: center; color: #555; font-size: 18px; margin-bottom: 36px; }
+  .page h2 { font-size: 24px; color: #222; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #eee; }
+  .page h2:first-of-type { border-top: none; padding-top: 0; }
+  .page p, .page li { color: #444; font-size: 17px; }
+  .page p { margin-bottom: 14px; }
+  .page ul, .page ol { padding-left: 22px; }
+  .page li { margin-bottom: 8px; }
+  .page .step { background: #fbf8ef; border: 1px solid #eee; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; }
+  .page .step h3 { color: #222; font-size: 19px; margin-bottom: 6px; }
+  .page .step p { margin-bottom: 0; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  footer p { color: #999; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="index.html">Introduction</a>
+    <a href="index.html#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="index.html#buy">Buy LGX</a>
+  </div>
+</header>
+
+<div class="page">
+  <h1>Accept LiLGcoin (LGX)</h1>
+  <p class="lede">A step-by-step guide for merchants — take LGX payments from your customers, with cheaper transactions and faster confirmations.</p>
+
+  <h2>Why accept LGX</h2>
+  <ul>
+    <li><strong>Cheaper transactions</strong> — LiLGcoin was designed for cheaper transactions and to be more efficient for everyday use.</li>
+    <li><strong>Faster confirmations</strong> — merchants get faster confirmation times, while still having the ability to wait for more confirmations when selling bigger ticket items.</li>
+    <li><strong>Peer-to-peer</strong> — payments go directly between you and your customer, with no central authority or banks.</li>
+    <li><strong>Worldwide customers</strong> — LGX works anywhere in the world, so you can sell beyond your local market.</li>
+  </ul>
+
+  <h2>What you need</h2>
+  <ul>
+    <li>A wallet that supports Binance Smart Chain, for example Trust Wallet or MetaMask.</li>
+    <li>A small amount of BNB in the wallet to pay for transaction fees (gas).</li>
+    <li>Your wallet address — the one customers send LGX to.</li>
+  </ul>
+
+  <h2>The steps</h2>
+
+  <div class="step">
+    <h3>Step 1 — Get a wallet</h3>
+    <p>Install Trust Wallet or MetaMask, create a wallet, and back up your seed phrase. Never share your seed phrase or private keys with anyone.</p>
+  </div>
+
+  <div class="step">
+    <h3>Step 2 — Show customers where to pay</h3>
+    <p>Display your wallet address at checkout — on your website, at your counter, or as a QR code. The customer sends LGX from their own wallet to that address.</p>
+  </div>
+
+  <div class="step">
+    <h3>Step 3 — Price in your local currency</h3>
+    <p>Display prices in your local currency and accept LGX at the current rate. Check the current LGX price on <a href="https://coinbrain.com/coins/bsc/0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a> or <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a> when you take a payment.</p>
+  </div>
+
+  <div class="step">
+    <h3>Step 4 — Confirm the payment</h3>
+    <p>Every payment can be verified on the public blockchain. Look it up on <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a> using the LGX contract address <code>0xbec041bc90cae81596df063c3eee4e858fc3903d</code>. For bigger ticket items, wait for more confirmations before handing over the goods.</p>
+  </div>
+
+  <div class="step">
+    <h3>Step 5 — Keep records</h3>
+    <p>Save each transaction's record — date, amount in LGX, and the rate you used. For guidance on tax compliance in your own jurisdiction, contact a qualified accountant.</p>
+  </div>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li><strong>Payments are final</strong> — once an LGX payment is confirmed on the blockchain, it cannot be reversed.</li>
+    <li><strong>You control the funds</strong> — LGX goes straight to your wallet. No bank holds it, and no one else can freeze it.</li>
+    <li><strong>Low fees</strong> — transaction fees on Binance Smart Chain are small, so more of each sale stays with you.</li>
+  </ul>
+
+  <h2>Earn more with LGX</h2>
+  <p>Using eligible exchanges, merchants can earn yields from LiLGcoin transaction fees by becoming a liquidity provider. And more is coming: an LGX debit/credit card for spending, the LGX Crypto Exchange, and LGX Gaming.</p>
+
+  <h2>Let people know you accept LGX</h2>
+  <p>Tell your customers — on your website, your storefront, and your social pages. A growing number of people hold LGX and look for places to spend it. Questions about accepting LGX? Email <a href="mailto:lilgcoinx@gmail.com">lilgcoinx@gmail.com</a>.</p>
+
+  <p>See also: <a href="businesses.html">LiLGcoin for Businesses</a> · <a href="faq.html">FAQ</a> · <a href="whitepaper.html">LiLGcoin White Paper</a></p>
+</div>
+
+<footer>
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bsc/0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+</body>
+</html>
