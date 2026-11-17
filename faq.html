@@ -29,7 +29,8 @@
   code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
   footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
   .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
-  .footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
   .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
   .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
   .footer-col a:hover { color: #c89300; }
@@ -119,6 +120,7 @@
 
 <footer>
   <div class="footer-cols">
+    <div class="footer-side">
     <div class="footer-col">
       <h4>Introduction:</h4>
       <a href="individuals.html">Individuals</a>
@@ -135,6 +137,8 @@
       <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
       <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
     </div>
+    </div>
+    <div class="footer-side">
     <div class="footer-col">
       <h4>Participate:</h4>
       <a href="https://pancakeswap.finance/swap?outputCurrency=0xbec041bc90cae81596df063c3eee4e858fc3903d">Buy LGX</a>
@@ -147,6 +151,7 @@
       <a href="index.html">About LiLGcoin</a>
       <a href="mailto:lilgcoinx@gmail.com">Contact</a>
       <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
     </div>
   </div>
 
