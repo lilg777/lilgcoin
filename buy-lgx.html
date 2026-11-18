@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buy LGX - LiLGcoin - Open source P2P money</title>
-<meta name="description" content="Buy LiLGcoin (LGX or ₲) right here on lilgcoin.org: connect your wallet and swap BNB for LGX on PancakeSwap, without leaving the site.">
+<meta name="description" content="Buy LiLGcoin (LGX or ₲): swap BNB for LGX on OpenOcean, pre-filled and ready — connect your wallet and trade.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
@@ -25,8 +25,13 @@
   .page p { margin-bottom: 14px; }
   .page ul, .page ol { padding-left: 22px; }
   .page li { margin-bottom: 8px; }
-  .swap-frame { width: 100%; max-width: 480px; height: 680px; border: 1px solid #e5e5e5; border-radius: 16px; display: block; margin: 0 auto 16px; background: #fff; }
-  .swap-note { text-align: center; color: #666; font-size: 15px; }
+  .swap-card { max-width: 480px; margin: 0 auto 16px; border: 1px solid #e5e5e5; border-radius: 16px; padding: 28px 24px; text-align: center; }
+  .swap-card .pair { font-size: 26px; font-weight: 700; color: #222; margin-bottom: 6px; }
+  .swap-card .pair span { color: #c89300; }
+  .swap-card p { color: #555; font-size: 16px; margin-bottom: 20px; }
+  .swap-btn { display: inline-block; background: #c89300; color: #fff; font-size: 18px; font-weight: 700; padding: 14px 28px; border-radius: 12px; }
+  .swap-btn:hover { background: #a87b00; text-decoration: none; }
+  .swap-alt { margin-top: 16px; font-size: 15px; color: #666; }
   footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
   .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
   .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
@@ -52,23 +57,29 @@
 
 <div class="page">
   <h1>Buy LGX</h1>
-  <p class="lede">Swap BNB for LGX right here — connect your wallet and trade on PancakeSwap, without leaving lilgcoin.org.</p>
+  <p class="lede">Swap BNB for LGX on OpenOcean — pre-filled and ready. Connect your wallet there and trade.</p>
 
-  <iframe class="swap-frame" src="https://pancakeswap.finance/swap?outputCurrency=0xbec041bc90cae81596df063c3eee4e858fc3903d" title="Buy LGX on PancakeSwap" allow="clipboard-write"></iframe>
-  <p class="swap-note">If the swap doesn't load, <a href="https://pancakeswap.finance/swap?outputCurrency=0xbec041bc90cae81596df063c3eee4e858fc3903d">open it on PancakeSwap</a> instead.</p>
+  <div class="swap-card">
+    <div class="pair">BNB <span>&rarr;</span> LGX</div>
+    <p>BNB Smart Chain &middot; OpenOcean</p>
+    <a class="swap-btn" href="https://app.openocean.finance/swap/bsc/BNB/LGX">Swap BNB for LGX</a>
+    <p class="swap-alt">Prefer PancakeSwap? <a href="https://pancakeswap.finance/swap?outputCurrency=0xbec041bc90cae81596df063c3eee4e858fc3903d">Swap there instead</a>.</p>
+  </div>
 
   <h2>How it works</h2>
   <ol>
+    <li>Tap the button above — the swap opens on OpenOcean with BNB &rarr; LGX already filled in.</li>
     <li>Connect your wallet (Trust Wallet, MetaMask, or any wallet from <a href="wallets.html">Choose your wallet</a>).</li>
     <li>Make sure you have BNB in the wallet — you swap BNB for LGX, and a little BNB pays the transaction fee.</li>
+    <li><strong>Use Advanced, not Ultra.</strong> On OpenOcean, switch to Advanced mode — Ultra doesn't pick up LGX.</li>
     <li>Enter how much BNB to swap, check the rate, and confirm in your wallet.</li>
   </ol>
 
   <h2>Good to know</h2>
   <ul>
-    <li><strong>The swap runs on PancakeSwap.</strong> Your wallet connects directly to them — lilgcoin.org never holds your funds.</li>
-    <li><strong>Check the rate before you confirm.</strong> The main LGX pool is still small, so a large swap can move the price — the swap shows you the price impact before you confirm.</li>
-    <li><strong>Verify the token.</strong> The swap is pre-filled with the real LGX contract: <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">0xbec041bc90cae81596df063c3eee4e858fc3903d</a> on BscScan.</li>
+    <li><strong>The swap runs on OpenOcean.</strong> Your wallet connects directly to them — lilgcoin.org never holds your funds.</li>
+    <li><strong>Check the rate before you confirm.</strong> The main LGX pool is still small, so a large swap can move the price a lot — the swap shows you the price impact before you confirm. Smaller swaps get a better rate.</li>
+    <li><strong>Verify the token.</strong> The real LGX contract is <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">0xbec041bc90cae81596df063c3eee4e858fc3903d</a> on BscScan.</li>
     <li>Need BNB first? Buy it with a card through an on-ramp such as MoonPay, then come back here to swap it for LGX.</li>
   </ul>
 
