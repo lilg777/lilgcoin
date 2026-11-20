@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiLGcoin - Open source P2P money</title>
+<meta name="description" content="LiLGcoin (LGX or ₲) is a peer-to-peer crypto currency and open-source software project on the Binance Smart Chain.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
+  .hero { max-width: 1100px; margin: 0 auto; padding: 64px 20px 48px; text-align: center; }
+  .hero img { width: 170px; height: 170px; border-radius: 50%; margin-bottom: 24px; }
+  .hero h1 { font-size: 40px; line-height: 1.25; font-weight: 700; color: #222; max-width: 640px; margin: 0 auto 26px; }
+  .btn { display: inline-block; background: #FFD54A; color: #222; font-weight: 700; border-radius: 4px; padding: 13px 30px; font-size: 17px; border: 1px solid #e8b800; }
+  .btn:hover { text-decoration: none; filter: brightness(1.03); }
+  .intro { max-width: 1100px; margin: 0 auto; padding: 10px 20px 48px; text-align: center; }
+  .intro p { font-size: 18px; color: #444; max-width: 780px; margin: 0 auto 28px; }
+  .intro p strong { color: #222; }
+  .features { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+  .feature { flex: 1 1 200px; max-width: 260px; padding: 8px; }
+  .feature .icon { font-size: 34px; margin-bottom: 6px; }
+  .feature h3 { font-size: 17px; color: #222; margin-bottom: 4px; }
+  .feature p { font-size: 15px; color: #666; }
+  section { max-width: 1100px; margin: 0 auto; padding: 44px 20px; border-top: 1px solid #eee; }
+  section h2 { font-size: 28px; color: #222; text-align: center; margin-bottom: 18px; }
+  section p, section li { color: #444; font-size: 17px; }
+  section ol { max-width: 640px; margin: 0 auto; padding-left: 22px; }
+  section li { margin-bottom: 10px; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  .socials { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: center; font-size: 16px; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
+  .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
+  .footer-col a:hover { color: #c89300; }
+  footer p { color: #999; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="#">Introduction</a>
+    <a href="#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+  </details>
+  <a class="direct" href="https://coinbrain.com/coins/bsc/0xbec041bc90cae81596df063c3eee4e858fc3903d">Price</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+<div class="hero">
+  <img src="logo.jpg" alt="LiLGcoin logo">
+  <h1>LiLGcoin is a peer-to-peer cryptocurrency and a new kind of money.</h1>
+  <a class="btn" href="#buy">Get started with LiLGcoin</a>
+</div>
+
+<div class="intro">
+  <p><strong>LiLGcoin</strong> (<strong>LGX</strong> or ₲) uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of LGX is carried out collectively by the network. <strong>LiLGcoin</strong> is open-source; its design is public, nobody owns or controls <strong>LiLGcoin</strong> and <a href="#buy">everyone can take part</a>. Through many of its unique properties, LiLGcoin allows exciting uses that could not be covered by any previous payment system. Proposed in 2020 by self-taught programmer <strong>Austin Douglas</strong>, the network went live with an initial supply of 750,000 coins and a total supply of 7.5 million coins on 30 October 2021 — aimed to link small businesses and big businesses together.</p>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">⚡</div>
+      <h3>Fast peer-to-peer transactions</h3>
+      <p>Built for faster and cheaper transactions on Binance Smart Chain.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🌍</div>
+      <h3>Worldwide payments</h3>
+      <p>Send LGX anywhere in the world, no banks in the middle.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">💸</div>
+      <h3>Low processing fees</h3>
+      <p>Minimal fees on every transaction, by design.</p>
+    </div>
+  </div>
+</div>
+
+<section id="buy">
+  <h2>Get started with LiLGcoin</h2>
+  <ol>
+    <li>Get a wallet that supports Binance Smart Chain (for example Trust Wallet or MetaMask) and add some BNB for gas. Not sure which one? See <a href="wallets.html">Choose your wallet</a>.</li>
+    <li>Open PancakeSwap and paste the LGX contract address below to swap BNB for LGX.</li>
+    <li>Contract (BSC): <code>0xbec041bc90cae81596df063c3eee4e858fc3903d</code></li>
+    <li><a href="https://pancakeswap.finance/swap?outputCurrency=0xbec041bc90cae81596df063c3eee4e858fc3903d">Buy LGX on PancakeSwap</a></li>
+  </ol>
+</section>
+
+<section>
+  <h2>LiLGcoin for everyone</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">👤</div>
+      <h3>Individuals</h3>
+      <p>Get a wallet, buy LGX, and send it anywhere in the world with low fees.</p>
+      <p><a href="individuals.html">Learn more →</a></p>
+    </div>
+    <div class="feature">
+      <div class="icon">🏪</div>
+      <h3>Businesses</h3>
+      <p>Accept LGX from your customers — cheaper transactions and faster confirmations.</p>
+      <p><a href="businesses.html">Learn more →</a></p>
+    </div>
+    <div class="feature">
+      <div class="icon">💻</div>
+      <h3>Developers</h3>
+      <p>Open-source code on GitHub, on Binance Smart Chain. Build with LGX.</p>
+      <p><a href="developers.html">Learn more →</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="follow">
+  <h2>Follow LiLGcoin</h2>
+  <div class="socials">
+    <a href="https://twitter.com/lilgcoin">Twitter</a>
+    <a href="https://youtube.com/channel/UC4yEox4N0ZpLr4lJg4w5wQg">YouTube</a>
+    <a href="https://facebook.com/LiLGcoin">Facebook</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="https://instagram.com/lilgcoin_official">Instagram</a>
+    <a href="https://tiktok.com/@lilgcoin">TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Introduction:</h4>
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources:</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+    </div>
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Participate:</h4>
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+    <div class="footer-col">
+      <h4>Other:</h4>
+      <a href="https://coinbrain.com/coins/bsc/0xbec041bc90cae81596df063c3eee4e858fc3903d">Price</a>
+      <a href="index.html">About LiLGcoin</a>
+      <a href="mailto:lilgcoinx@gmail.com">Contact</a>
+      <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bsc/0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+</body>
+</html>
