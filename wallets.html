@@ -16,6 +16,25 @@
   .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
   .nav a { color: #555; font-size: 15px; }
   .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
   .page { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
   .page h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 12px; }
   .page .lede { text-align: center; color: #555; font-size: 18px; margin-bottom: 36px; }
@@ -51,8 +70,53 @@
     <a href="faq.html">FAQ</a>
     <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
     <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
 </header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+  </details>
+  <a class="direct" href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Price</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
 
 <div class="page">
   <h1>Choose your wallet</h1>
