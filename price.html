@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LGX Price Chart - LiLGcoin</title>
+<meta name="description" content="The live LiLGcoin (LGX) price in USD and daily price chart, from the main LGX/BTCB pool on PancakeSwap.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
+  .hero { max-width: 1100px; margin: 0 auto; padding: 64px 20px 48px; text-align: center; }
+  .hero img { width: 170px; height: 170px; border-radius: 50%; margin-bottom: 24px; }
+  .hero h1 { font-size: 40px; line-height: 1.25; font-weight: 700; color: #222; max-width: 640px; margin: 0 auto 26px; }
+  .btn { display: inline-block; background: #FFD54A; color: #222; font-weight: 700; border-radius: 4px; padding: 13px 30px; font-size: 17px; border: 1px solid #e8b800; }
+  .btn:hover { text-decoration: none; filter: brightness(1.03); }
+  .intro { max-width: 1100px; margin: 0 auto; padding: 10px 20px 48px; text-align: center; }
+  .intro p { font-size: 18px; color: #444; max-width: 780px; margin: 0 auto 28px; }
+  .intro p strong { color: #222; }
+  .features { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+  .feature { flex: 1 1 200px; max-width: 260px; padding: 8px; }
+  .feature .icon { font-size: 34px; margin-bottom: 6px; }
+  .feature h3 { font-size: 17px; color: #222; margin-bottom: 4px; }
+  .feature p { font-size: 15px; color: #666; }
+  section { max-width: 1100px; margin: 0 auto; padding: 44px 20px; border-top: 1px solid #eee; }
+  section h2 { font-size: 28px; color: #222; text-align: center; margin-bottom: 18px; }
+  section p, section li { color: #444; font-size: 17px; }
+  section ol { max-width: 640px; margin: 0 auto; padding-left: 22px; }
+  section li { margin-bottom: 10px; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  .socials { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: center; font-size: 16px; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
+  .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
+  .footer-col a:hover { color: #c89300; }
+  footer p { color: #999; font-size: 14px; }
+
+  .pc-wrap { max-width: 1240px; margin: 0 auto; padding: 28px 20px 10px; }
+  .pc-price-card { background: #0e0f11; border-radius: 20px; padding: 30px 32px; }
+  .pc-label { color: #9aa3ad; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 2px; }
+  .pc-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .pc-price { color: #fff; font-size: 72px; font-weight: 800; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; line-height: 1.05; }
+  .pc-unit { color: #9aa3ad; font-size: 22px; font-weight: 600; }
+  .pc-dot { width: 9px; height: 9px; border-radius: 50%; background: #1f9d63; display: inline-block; animation: pc-pulse 2s infinite; }
+  @keyframes pc-pulse { 0% { opacity: 1; } 50% { opacity: .3; } 100% { opacity: 1; } }
+  .pc-live { color: #1f9d63; font-weight: 700; font-size: 13px; letter-spacing: .08em; }
+  .pc-sub { color: #9aa3ad; font-size: 14px; margin: 8px 0 0; }
+  .pc-chart-card { background: #0e0f11; border-radius: 20px; padding: 16px 14px 10px; margin-top: 16px; }
+  .pc-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+  .pc-pair { color: #9aa3ad; font-size: 13px; }
+  .pc-ranges { margin-left: auto; display: flex; gap: 6px; }
+  .pc-ranges button { border: 1px solid #2c2f36; background: #1d2026; color: #e8eaed; border-radius: 999px; padding: 5px 13px; font-size: 13px; cursor: pointer; }
+  .pc-ranges button.on { background: #f2f3f5; color: #101214; border-color: #f2f3f5; }
+  .pc-chart-card #readout { font-size: 13.5px; color: #c8cdd4; padding: 8px 2px 4px; min-height: 20px; font-variant-numeric: tabular-nums; }
+  .pc-chart-card canvas { display: block; width: 100%; }
+  .pc-fine { color: #8a94a0; font-size: 12.5px; margin: 14px 0 30px; line-height: 1.55; }
+  @media (max-width: 640px) { .pc-price { font-size: 44px; } .pc-price-card { padding: 22px 20px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="#">Introduction</a>
+    <a href="#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a class="active" href="price.html">Price Chart</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+  </details>
+  <a class="direct" href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Price</a>
+  <a class="direct" href="price.html">Price Chart</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+<div class="pc-wrap">
+  <div class="pc-price-card">
+    <p class="pc-label">LiLGcoin · LGX / USD</p>
+    <div class="pc-row">
+      <span class="pc-price" id="bigPrice">0.00043608</span>
+      <span class="pc-unit">USD</span>
+      <span><span class="pc-dot"></span> <span class="pc-live">LIVE</span></span>
+    </div>
+    <p class="pc-sub">Main pool price · checks every 30 seconds · <span id="updated"></span></p>
+  </div>
+  <div class="pc-chart-card">
+    <div class="pc-toolbar">
+      <span class="pc-pair">LGX / USD · LGX/BTCB pool · 1D · <span id="updatedChart"></span></span>
+      <span class="pc-ranges">
+        <button data-range="30">1M</button><button data-range="90">3M</button><button data-range="180">6M</button><button data-range="all" class="on">All</button>
+      </span>
+    </div>
+    <canvas id="chart"></canvas>
+    <div id="readout"></div>
+  </div>
+  <p class="pc-fine">Data: LI.FI and GeckoTerminal (PancakeSwap LGX/BTCB pool). The price checks every 30 seconds; the candles refresh every minute. Candles appear only on days with trades — LGX trading is sparse, so quiet stretches are compressed.</p>
+</div>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Introduction:</h4>
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources:</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+    </div>
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Participate:</h4>
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+    <div class="footer-col">
+      <h4>Other:</h4>
+      <a href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Price</a>
+      <a href="price.html">Price Chart</a>
+      <a href="index.html">About LiLGcoin</a>
+      <a href="mailto:lilgcoinx@gmail.com">Contact</a>
+      <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+<script>
+(function(){
+const bigPrice = document.getElementById('bigPrice');
+const updatedEl = document.getElementById('updated');
+function t8(p){ const s = p.toFixed(12); return s.slice(0, s.indexOf('.')+9); }
+function stamp(){ if(updatedEl) updatedEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'numeric', minute:'2-digit', second:'2-digit'}); }
+async function refreshPrice(){
+  try {
+    const r = await fetch('https://li.quest/v1/token?chain=56&token=0xbec041bc90cae81596df063c3eee4e858fc3903d');
+    const d = await r.json();
+    const p = parseFloat(d.priceUSD);
+    if(isFinite(p) && bigPrice){
+      const txt = t8(p);
+      if(bigPrice.textContent !== txt){
+        bigPrice.textContent = txt;
+        bigPrice.style.transition = 'none'; bigPrice.style.opacity = '0.35';
+        requestAnimationFrame(() => { bigPrice.style.transition = 'opacity .5s'; bigPrice.style.opacity = '1'; });
+      }
+      stamp();
+    }
+  } catch(e) {}
+}
+refreshPrice();
+setInterval(refreshPrice, 30000);
+})();
+</script>
+<script>
+(function(){
+const RAW = [[1755129600, 0.00078534, 0.00078534, 0.0007534, 0.00076216, 8.9], [1755216000, 0.00076216, 0.00076408, 0.0007519, 0.0007519, 4.08], [1755388800, 0.0007519, 0.00076221, 0.0007519, 0.00076221, 3.61], [1755475200, 0.00076221, 0.00076221, 0.00074912, 0.00074912, 0.29], [1755561600, 0.00074912, 0.0007602, 0.00074912, 0.00075076, 19.75], [1755648000, 0.00075076, 0.00076759, 0.00075076, 0.00076759, 7.39], [1755734400, 0.00076759, 0.00078056, 0.00076759, 0.00078056, 9.97], [1755820800, 0.00078056, 0.00079028, 0.00078056, 0.00079028, 4.01], [1755907200, 0.00079028, 0.00079581, 0.00078806, 0.00079564, 7.02], [1755993600, 0.00079564, 0.00079701, 0.000781, 0.000781, 8.63], [1756080000, 0.000781, 0.0007916, 0.00077065, 0.00077065, 27.02], [1756166400, 0.00077065, 0.00078564, 0.00076627, 0.00078523, 13.32], [1756252800, 0.00078523, 0.00078889, 0.00078281, 0.00078417, 11.45], [1756339200, 0.00078417, 0.0007927, 0.00078417, 0.00079098, 4.51], [1756425600, 0.00079098, 0.00079098, 0.00076913, 0.00076913, 31.13], [1756512000, 0.00076913, 0.00077137, 0.00076913, 0.00077137, 1.51], [1756598400, 0.00077137, 0.00077381, 0.00077137, 0.00077381, 2.99], [1756684800, 0.00077381, 0.00078029, 0.00076758, 0.00077376, 5.83], [1756771200, 0.00077376, 0.00078881, 0.00077376, 0.00078589, 14.47], [1756857600, 0.00078589, 0.00079251, 0.00078589, 0.00079251, 6.59], [1756944000, 0.00079251, 0.00079251, 0.00077816, 0.00078562, 7.01], [1757030400, 0.00078562, 0.00079393, 0.00077928, 0.0007938, 11.07], [1757116800, 0.0007938, 0.0007938, 0.00078044, 0.00078044, 0.25], [1757203200, 0.00078044, 0.00078432, 0.00077946, 0.00078432, 1.76], [1757289600, 0.00078432, 0.00079168, 0.0007835, 0.00079168, 6.15], [1757376000, 0.00079168, 0.00079614, 0.00079168, 0.00079349, 3.83], [1757462400, 0.00079349, 0.00079918, 0.00078151, 0.0007988, 19.5], [1757548800, 0.0007988, 0.00080338, 0.0007988, 0.00080338, 11.18], [1757635200, 0.00080338, 0.00080345, 0.00079738, 0.00079738, 12.61], [1757721600, 0.00079738, 0.00080097, 0.00079418, 0.00079418, 2.98], [1757808000, 0.00079418, 0.00080441, 0.00079418, 0.00080076, 11.07], [1757894400, 0.00080076, 0.00080076, 0.00079253, 0.00079253, 0.92], [1757980800, 0.00079253, 0.00079579, 0.00079253, 0.00079579, 0.47], [1758067200, 0.00079579, 0.00080597, 0.00079579, 0.00080597, 2.9], [1758153600, 0.00080597, 0.00080661, 0.00080597, 0.00080661, 4.58], [1758240000, 0.00080661, 0.00080661, 0.00079671, 0.00079671, 1.1], [1758326400, 0.00079671, 0.00080327, 0.00079054, 0.00079864, 19.91], [1758412800, 0.00079864, 0.00080506, 0.00078983, 0.00079066, 23.2], [1758499200, 0.00079066, 0.00079066, 0.00077947, 0.00077947, 15.9], [1758585600, 0.00077947, 0.00078379, 0.00077947, 0.00077991, 2.32], [1758672000, 0.00077991, 0.00079377, 0.00077991, 0.00078791, 20.65], [1758758400, 0.00078791, 0.00079179, 0.0007655, 0.00077042, 34.32], [1758844800, 0.00077042, 0.00077747, 0.00076107, 0.00077232, 64.11], [1758931200, 0.00077232, 0.00077378, 0.00076273, 0.00076895, 66.62], [1759017600, 0.00076895, 0.00077856, 0.00076015, 0.00077553, 54.09], [1759104000, 0.00077553, 0.00078473, 0.00076857, 0.00077901, 71.07], [1759190400, 0.00077901, 0.00078375, 0.00076548, 0.00076994, 28.0], [1759276800, 0.00076994, 0.00078976, 0.00076994, 0.00078976, 29.92], [1759363200, 0.00078976, 0.00079801, 0.00078688, 0.00079286, 31.35], [1759449600, 0.00079286, 0.00080566, 0.00079096, 0.00080423, 39.86], [1759536000, 0.00080423, 0.0008044, 0.00079462, 0.00079726, 16.36], [1759622400, 0.00079726, 0.00081129, 0.00079225, 0.00080077, 36.3], [1759708800, 0.00080077, 0.00081273, 0.00079774, 0.00080359, 22.93], [1759795200, 0.00080359, 0.00080692, 0.00079217, 0.00080121, 36.77], [1759881600, 0.00080121, 0.00080438, 0.00079594, 0.00080289, 5.09], [1759968000, 0.00080289, 0.00080508, 0.00078689, 0.0007991, 11.93], [1760054400, 0.0007991, 0.00079918, 0.00061956, 0.00078314, 278.56], [1760140800, 0.00078314, 0.00078314, 0.00075631, 0.0007564, 29.62], [1760227200, 0.0007564, 0.00078068, 0.0007564, 0.00078068, 19.4], [1760313600, 0.00078068, 0.00078255, 0.00077375, 0.00078255, 4.44], [1760400000, 0.00078255, 0.00078255, 0.00073074, 0.00074321, 214.98], [1760486400, 0.00074321, 0.00074321, 0.00072529, 0.00072529, 3.61], [1760572800, 0.00072529, 0.00072529, 0.00070441, 0.00070441, 2.47], [1760659200, 0.00070441, 0.00070441, 0.00068373, 0.00068373, 3.37], [1760745600, 0.00068373, 0.00070328, 0.00068373, 0.00070019, 2.48], [1760918400, 0.00070019, 0.00072267, 0.00070019, 0.00072267, 0.51], [1761004800, 0.00072267, 0.00073933, 0.00072267, 0.00073933, 0.52], [1761091200, 0.00073933, 0.00073933, 0.00070113, 0.00070232, 2.0], [1761177600, 0.00070232, 0.00071749, 0.00070232, 0.00071624, 2.65], [1761264000, 0.00071624, 0.00071718, 0.00071624, 0.00071718, 0.57], [1761523200, 0.00071718, 0.00075111, 0.00071718, 0.00075111, 1.32], [1761609600, 0.00075111, 0.00075111, 0.00073098, 0.00073098, 8.36], [1761696000, 0.00073098, 0.00073806, 0.00073098, 0.00073806, 0.83], [1761782400, 0.00073806, 0.00073806, 0.0006925, 0.0006925, 4.13], [1761868800, 0.0006925, 0.00071276, 0.0006925, 0.00071276, 0.33], [1762041600, 0.00071276, 0.00071328, 0.00071276, 0.00071328, 0.81], [1762128000, 0.00071328, 0.00071328, 0.00068285, 0.00069083, 7.3], [1762214400, 0.00069083, 0.00069083, 0.00067488, 0.00067488, 0.75], [1762300800, 0.00067488, 0.00067488, 0.00066172, 0.00066172, 0.46], [1762473600, 0.00066172, 0.00066456, 0.00066172, 0.00066456, 0.4], [1762560000, 0.00066456, 0.00066916, 0.00066456, 0.00066916, 0.44], [1762646400, 0.00066916, 0.00067593, 0.00066206, 0.00067593, 1.08], [1762732800, 0.00067593, 0.00068627, 0.00067593, 0.00068627, 0.29], [1762905600, 0.00068627, 0.00068627, 0.00066702, 0.00066702, 0.2], [1763078400, 0.00066702, 0.00066702, 0.00062095, 0.00062095, 0.41], [1763164800, 0.00062095, 0.00062095, 0.00061412, 0.00061412, 9.25], [1763251200, 0.00061412, 0.00061412, 0.00061281, 0.00061281, 1.23], [1763337600, 0.00061281, 0.00061404, 0.00061281, 0.00061404, 0.18], [1763424000, 0.00061404, 0.00061404, 0.00057915, 0.00060098, 6.66], [1763510400, 0.00060098, 0.00060098, 0.00058315, 0.00058954, 3.5], [1763596800, 0.00058954, 0.00059754, 0.00056003, 0.00056003, 3.22], [1763683200, 0.00056003, 0.00056224, 0.00052936, 0.00054751, 3.49], [1763769600, 0.00054751, 0.00054817, 0.00053921, 0.00054359, 3.54], [1763856000, 0.00054359, 0.00056307, 0.00054359, 0.00056307, 0.6], [1764201600, 0.00056307, 0.00058768, 0.00056307, 0.00058657, 1.88], [1764288000, 0.00058657, 0.00059053, 0.00058517, 0.00058517, 0.28], [1764547200, 0.00058517, 0.00058517, 0.00055201, 0.00055201, 0.36], [1764806400, 0.00055201, 0.00059978, 0.00055201, 0.00059978, 0.4], [1765152000, 0.00059978, 0.00059978, 0.0005825, 0.0005825, 0.93], [1765238400, 0.0005825, 0.00059606, 0.0005825, 0.00059606, 0.23], [1765411200, 0.00059606, 0.00059606, 0.00059462, 0.00059462, 0.24], [1765584000, 0.00059462, 0.00059462, 0.00058168, 0.00058168, 0.51], [1765929600, 0.00058168, 0.00058168, 0.00057595, 0.00057595, 0.4], [1766016000, 0.00057595, 0.00057595, 0.00055736, 0.00055736, 0.22], [1766620800, 0.00055736, 0.00056147, 0.00055736, 0.00056147, 0.16], [1766707200, 0.00056147, 0.00057191, 0.00056147, 0.00057075, 0.24], [1766880000, 0.00057075, 0.00057075, 0.00056608, 0.00056608, 0.48], [1766966400, 0.00056608, 0.00057891, 0.00056608, 0.00057891, 0.21], [1767052800, 0.00057891, 0.00057891, 0.00056365, 0.00056365, 0.99], [1767139200, 0.00056365, 0.00057061, 0.00056365, 0.00057061, 0.87], [1768003200, 0.00057061, 0.00058459, 0.00057061, 0.00058459, 0.4], [1768348800, 0.00058459, 0.0006268, 0.00058459, 0.0006268, 0.38], [1768608000, 0.0006268, 0.0006268, 0.00061198, 0.00061198, 1.1], [1768694400, 0.00061198, 0.00061291, 0.00061152, 0.00061291, 0.12], [1768780800, 0.00061291, 0.00061291, 0.00059723, 0.00059723, 0.11], [1768867200, 0.00059723, 0.00059847, 0.00059723, 0.00059847, 0.44], [1769558400, 0.00059847, 0.00059847, 0.0005758, 0.0005758, 0.19], [1769904000, 0.0005758, 0.0005758, 0.00049723, 0.00049723, 0.33], [1770076800, 0.00049723, 0.00049723, 0.00048077, 0.00048077, 0.45], [1770163200, 0.00048077, 0.00048864, 0.00046318, 0.00046318, 0.67], [1770249600, 0.00046318, 0.00046318, 0.00042251, 0.00042251, 0.39], [1770336000, 0.00042251, 0.0004501, 0.00041705, 0.0004501, 0.49], [1770422400, 0.0004501, 0.00045372, 0.0004501, 0.00045372, 0.16], [1770508800, 0.00045372, 0.00045739, 0.00045064, 0.00045739, 0.28], [1770681600, 0.00045739, 0.00045739, 0.0004469, 0.0004469, 0.11], [1770768000, 0.0004469, 0.0004469, 0.00043153, 0.00043153, 0.13], [1770854400, 0.00043153, 0.00043153, 0.00042613, 0.00042613, 0.37], [1770940800, 0.00042613, 0.00042963, 0.00042613, 0.00042963, 0.13], [1771372800, 0.00042963, 0.00043676, 0.00042963, 0.00043676, 1.05], [1771891200, 0.00043676, 0.00043676, 0.0004082, 0.00041157, 0.48], [1772582400, 0.00041157, 0.00046866, 0.00041157, 0.00046866, 0.21], [1772755200, 0.00046866, 0.00046866, 0.00043924, 0.00043924, 0.17], [1773619200, 0.00043924, 0.00047754, 0.00043924, 0.00047754, 0.09], [1773705600, 0.00047754, 0.00047754, 0.00047533, 0.00047533, 0.13], [1774310400, 0.00047533, 0.00047533, 0.00045178, 0.00045178, 0.11], [1775088000, 0.00045178, 0.00045178, 0.00042562, 0.00042855, 0.4], [1775606400, 0.00042855, 0.00046419, 0.00042855, 0.00046419, 0.31], [1775779200, 0.00046419, 0.00046419, 0.00046062, 0.00046213, 0.16], [1775865600, 0.00046213, 0.00046664, 0.00046213, 0.00046664, 0.01], [1776124800, 0.00046664, 0.00047668, 0.00046664, 0.00047663, 0.17], [1776729600, 0.00047663, 0.00049149, 0.00047663, 0.00049149, 0.03], [1776816000, 0.00049149, 0.00050059, 0.00049149, 0.00050059, 0.1], [1777075200, 0.00050059, 0.00050059, 0.00049589, 0.00049589, 0.07], [1777248000, 0.00049589, 0.00050719, 0.00049589, 0.00050719, 0.1], [1777593600, 0.00050719, 0.00050719, 0.00049464, 0.00050234, 0.27], [1777766400, 0.00050234, 0.00050428, 0.00050234, 0.00050428, 0.09], [1777939200, 0.00050428, 0.0005154, 0.00050428, 0.0005154, 0.19], [1778284800, 0.0005154, 0.0005154, 0.00051531, 0.00051531, 0.41], [1778630400, 0.00051531, 0.00052156, 0.00051059, 0.00051059, 0.43], [1778889600, 0.00051059, 0.00051059, 0.00050746, 0.00050746, 13.1], [1779148800, 0.00050746, 0.00050746, 0.00049804, 0.00049804, 0.07], [1779494400, 0.00049804, 0.00049804, 0.00049198, 0.00049198, 0.3], [1780099200, 0.00049198, 0.00049198, 0.0004776, 0.00048132, 1.68], [1780185600, 0.00048132, 0.00048194, 0.00048132, 0.00048194, 0.01], [1780531200, 0.00048194, 0.00048194, 0.00041372, 0.00041372, 0.0], [1780617600, 0.00041372, 0.00041372, 0.00040527, 0.00040527, 0.16], [1781481600, 0.00040527, 0.00043137, 0.00040527, 0.00043137, 0.11], [1781568000, 0.00043137, 0.00043137, 0.00043055, 0.00043055, 0.08], [1781740800, 0.00043055, 0.00043055, 0.00040545, 0.00040545, 0.04], [1782950400, 0.00040545, 0.00040545, 0.00039614, 0.00039614, 0.19], [1783555200, 0.00039614, 0.00040998, 0.00039614, 0.00040998, 0.01], [1784332800, 0.00040998, 0.00041927, 0.00040998, 0.00041927, 0.35], [1784505600, 0.00041927, 0.00042246, 0.00041927, 0.00042246, 0.01], [1784592000, 0.00042246, 0.00042909, 0.00042246, 0.00042909, 1.86], [1785283200, 0.00042909, 0.00042909, 0.00041925, 0.00041925, 0.23], [1785456000, 0.00041925, 0.00041925, 0.00041753, 0.00041753, 0.37], [1786406400, 0.00041753, 0.00041794, 0.00041753, 0.00041794, 0.38], [1787097600, 0.00041794, 0.0004377, 0.00041794, 0.0004377, 0.38], [1787270400, 0.0004377, 0.00050357, 0.0004377, 0.00050357, 0.85], [1787356800, 0.00050357, 0.00050785, 0.0004977, 0.0004977, 0.46], [1787875200, 0.0004977, 0.00051612, 0.0004977, 0.00051612, 1.9], [1788566400, 0.00051612, 0.0005177, 0.00051585, 0.0005177, 0.96], [1788912000, 0.0005177, 0.0005177, 0.00050335, 0.00050335, 0.42], [1789689600, 0.00050335, 0.00050335, 0.00049838, 0.00049838, 0.46], [1789776000, 0.00049838, 0.00052611, 0.00049838, 0.00052611, 2.11], [1789862400, 0.00052611, 0.00052611, 0.00051956, 0.00051956, 0.48], [1790035200, 0.00051956, 0.00055669, 0.00051956, 0.00055669, 0.39], [1790121600, 0.00055669, 0.00055669, 0.00055352, 0.00055352, 0.02], [1792022400, 0.00055352, 0.00055352, 0.00052099, 0.00052099, 2.26], [1792886400, 0.00052099, 0.00052322, 0.00052099, 0.00052322, 0.47], [1793836800, 0.00052322, 0.00052322, 0.00051895, 0.00051895, 0.43], [1793923200, 0.00051895, 0.00051895, 0.0004861, 0.0004861, 0.44], [1794528000, 0.0004861, 0.0004861, 0.00044406, 0.00044406, 0.05], [1794614400, 0.00044406, 0.00044406, 0.00043609, 0.00043609, 0.05]];
+let candles = RAW.map(r => ({t:r[0], o:r[1], h:r[2], l:r[3], c:r[4], v:r[5]}));
+let rangeDays = Infinity;
+let hover = -1;
+const cv = document.getElementById('chart');
+const ctx = cv.getContext('2d');
+const readout = document.getElementById('readout');
+const updatedEl = document.getElementById('updatedChart');
+const COL = { up:'#1f9d63', down:'#d64545', grid:'rgba(130,140,150,0.22)', text:'#8a94a0', cross:'rgba(130,140,150,0.55)', last:'#c9930a' };
+function t8(p){ const s = p.toFixed(12); return s.slice(0, s.indexOf('.')+9); }
+function fmt(p){ return '$' + t8(p); }
+function fmtDate(ts){ const d = new Date(ts*1000); return d.toLocaleDateString('en-US',{month:'short', day:'numeric', year:'numeric', timeZone:'UTC'}); }
+function view(){
+  if(!isFinite(rangeDays)) return candles;
+  const last = candles[candles.length-1].t;
+  return candles.filter(c => c.t >= last - rangeDays*86400);
+}
+function sizeCanvas(){
+  const w = cv.parentElement.clientWidth;
+  const h = Math.max(320, Math.min(540, Math.round(w*0.5)));
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = w*dpr; cv.height = h*dpr;
+  cv.style.width = w+'px'; cv.style.height = h+'px';
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  return {w, h};
+}
+function draw(){
+  const {w, h} = sizeCanvas();
+  const data = view();
+  const padR = 96, padL = 6, padT = 12, volH = Math.round(h*0.15), axisH = 22;
+  const plotW = w - padL - padR, plotH = h - padT - volH - axisH;
+  ctx.clearRect(0,0,w,h);
+  if(!data.length) return;
+  let lo = Infinity, hi = -Infinity, vmax = 0;
+  data.forEach(c => { lo = Math.min(lo, c.l); hi = Math.max(hi, c.h); vmax = Math.max(vmax, c.v); });
+  const pad = (hi-lo)*0.07 || hi*0.05; hi += pad; lo -= pad;
+  const y = p => padT + (hi-p)/(hi-lo)*plotH;
+  const step = plotW / data.length;
+  const bw = Math.max(1, Math.min(16, step*0.65));
+  const x = i => padL + step*i + step/2;
+  ctx.font = '11px -apple-system, system-ui, sans-serif';
+  ctx.textBaseline = 'middle';
+  for(let i=0;i<=4;i++){
+    const p = lo + (hi-lo)*i/4, yy = y(p);
+    ctx.strokeStyle = COL.grid; ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(padL+plotW, yy); ctx.stroke();
+    ctx.fillStyle = COL.text; ctx.fillText(t8(p), padL+plotW+8, yy);
+  }
+  const volTop = padT + plotH + 4;
+  data.forEach((c,i) => {
+    const vh = vmax ? (c.v/vmax)*(volH-6) : 0;
+    ctx.fillStyle = c.c >= c.o ? 'rgba(31,157,99,0.45)' : 'rgba(214,69,69,0.45)';
+    ctx.fillRect(x(i)-bw/2, volTop + (volH-6) - vh, bw, vh);
+  });
+  data.forEach((c,i) => {
+    const col = c.c >= c.o ? COL.up : COL.down;
+    ctx.strokeStyle = col; ctx.fillStyle = col;
+    ctx.beginPath(); ctx.moveTo(x(i), y(c.h)); ctx.lineTo(x(i), y(c.l)); ctx.stroke();
+    const t = y(Math.max(c.o,c.c)), b = y(Math.min(c.o,c.c));
+    ctx.fillRect(x(i)-bw/2, t, bw, Math.max(1, b-t));
+  });
+  const lastC = data[data.length-1];
+  ctx.strokeStyle = COL.last; ctx.setLineDash([4,4]);
+  ctx.beginPath(); ctx.moveTo(padL, y(lastC.c)); ctx.lineTo(padL+plotW, y(lastC.c)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = COL.text;
+  const ticks = Math.min(6, data.length);
+  for(let i=0;i<ticks;i++){
+    const idx = Math.round(i*(data.length-1)/(ticks-1 || 1));
+    const d = new Date(data[idx].t*1000);
+    ctx.fillText(d.toLocaleDateString('en-US',{month:'short', year:'2-digit', timeZone:'UTC'}), Math.min(x(idx)-14, padL+plotW-30), volTop+volH+8);
+  }
+  if(hover >= 0 && hover < data.length){
+    ctx.strokeStyle = COL.cross; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(x(hover), padT); ctx.lineTo(x(hover), padT+plotH+volH); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  showReadout(hover >= 0 ? data[hover] : lastC, hover < 0);
+}
+function showReadout(c, isLast){
+  const chg = (c.c - c.o)/c.o*100;
+  readout.innerHTML = (isLast ? 'Last · ' : '') + fmtDate(c.t) +
+    ' &nbsp; O ' + fmt(c.o) + ' &nbsp; H ' + fmt(c.h) + ' &nbsp; L ' + fmt(c.l) + ' &nbsp; C ' + fmt(c.c) +
+    ' &nbsp; <span style="color:' + (chg>=0 ? COL.up : COL.down) + '">' + (chg>=0?'+':'') + chg.toFixed(2) + '%</span>' +
+    ' &nbsp; Vol $' + c.v.toFixed(2);
+}
+function pick(e){
+  const rect = cv.getBoundingClientRect();
+  const data = view();
+  const padL = 6, padR = 96;
+  const plotW = rect.width - padL - padR;
+  const px = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+  const idx = Math.floor((px - padL) / (plotW / data.length));
+  hover = Math.max(0, Math.min(data.length-1, idx));
+  draw();
+}
+cv.addEventListener('mousemove', pick);
+cv.addEventListener('touchstart', pick, {passive:true});
+cv.addEventListener('touchmove', pick, {passive:true});
+cv.addEventListener('mouseleave', () => { hover = -1; draw(); });
+document.querySelectorAll('[data-range]').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('[data-range]').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    rangeDays = b.dataset.range === 'all' ? Infinity : parseInt(b.dataset.range, 10);
+    hover = -1; draw();
+  });
+});
+window.addEventListener('resize', draw);
+draw();
+function stamp(){ if(updatedEl) updatedEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'numeric', minute:'2-digit', second:'2-digit'}); }
+async function refreshCandles(){
+  try {
+    const r = await fetch('https://api.geckoterminal.com/api/v2/networks/bsc/pools/0x81708da24aae60f99bcb1c5a37a9c92a07b643e4/ohlcv/day?aggregate=1&limit=1000&currency=usd&token=base');
+    const d = await r.json();
+    const lst = (d.data && d.data.attributes && d.data.attributes.ohlcv_list) || [];
+    if(lst.length){
+      const fresh = lst.map(c => ({t:c[0], o:c[1], h:c[2], l:c[3], c:c[4], v:c[5]})).sort((a,b) => a.t-b.t);
+      const changed = fresh.length !== candles.length || fresh[fresh.length-1].c !== candles[candles.length-1].c;
+      candles = fresh;
+      if(changed) draw();
+      stamp();
+    }
+  } catch(e) {}
+}
+refreshCandles();
+setInterval(refreshCandles, 60000);
+})();
+</script>
+</body>
+</html>
