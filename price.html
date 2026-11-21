@@ -84,6 +84,16 @@
   .pc-chart-card canvas { display: block; width: 100%; }
   .pc-fine { color: #8a94a0; font-size: 12.5px; margin: 14px 0 30px; line-height: 1.55; }
   @media (max-width: 640px) { .pc-price { font-size: 44px; } .pc-price-card { padding: 22px 20px; } }
+
+  .pc-ticker { background: #0e0f11; border-radius: 14px; margin-top: 16px; overflow: hidden; padding: 11px 0; }
+  .pc-ticker-track { display: inline-flex; white-space: nowrap; animation: pc-scroll 30s linear infinite; will-change: transform; }
+  .pc-ticker:hover .pc-ticker-track { animation-play-state: paused; }
+  @keyframes pc-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .pc-tgroup { display: inline-flex; }
+  .pc-tick { display: inline-flex; align-items: baseline; gap: 8px; margin: 0 28px; font-size: 15px; color: #e8eaed; font-variant-numeric: tabular-nums; }
+  .pc-tick .sym { font-weight: 700; letter-spacing: .04em; color: #fff; }
+  .pc-tick .chg.up { color: #2fbf71; font-weight: 700; }
+  .pc-tick .chg.down { color: #ff5a52; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -154,6 +164,9 @@
       <span><span class="pc-dot"></span> <span class="pc-live">LIVE</span></span>
     </div>
     <p class="pc-sub">Main pool price · checks every 30 seconds · <span id="updated"></span></p>
+  </div>
+  <div class="pc-ticker" aria-label="Crypto price ticker">
+    <div class="pc-ticker-track" id="tickerTrack"><span class="pc-tgroup"><span class="pc-tick" data-tick="LGX"><span class="sym">LGX</span><span class="pr">$0.00043608</span><span class="chg down">▼ -1.79%</span></span><span class="pc-tick" data-tick="BTC"><span class="sym">BTC</span><span class="pr">$57,983.00</span><span class="chg down">▼ -6.11%</span></span><span class="pc-tick" data-tick="ETH"><span class="sym">ETH</span><span class="pr">$1,631.49</span><span class="chg down">▼ -6.61%</span></span><span class="pc-tick" data-tick="BNB"><span class="sym">BNB</span><span class="pr">$525.12</span><span class="chg down">▼ -8.01%</span></span><span class="pc-tick" data-tick="LGX"><span class="sym">LGX</span><span class="pr">$0.00043608</span><span class="chg down">▼ -1.79%</span></span><span class="pc-tick" data-tick="BTC"><span class="sym">BTC</span><span class="pr">$57,983.00</span><span class="chg down">▼ -6.11%</span></span><span class="pc-tick" data-tick="ETH"><span class="sym">ETH</span><span class="pr">$1,631.49</span><span class="chg down">▼ -6.61%</span></span><span class="pc-tick" data-tick="BNB"><span class="sym">BNB</span><span class="pr">$525.12</span><span class="chg down">▼ -8.01%</span></span><span class="pc-tick" data-tick="LGX"><span class="sym">LGX</span><span class="pr">$0.00043608</span><span class="chg down">▼ -1.79%</span></span><span class="pc-tick" data-tick="BTC"><span class="sym">BTC</span><span class="pr">$57,983.00</span><span class="chg down">▼ -6.11%</span></span><span class="pc-tick" data-tick="ETH"><span class="sym">ETH</span><span class="pr">$1,631.49</span><span class="chg down">▼ -6.61%</span></span><span class="pc-tick" data-tick="BNB"><span class="sym">BNB</span><span class="pr">$525.12</span><span class="chg down">▼ -8.01%</span></span></span><span class="pc-tgroup"><span class="pc-tick" data-tick="LGX"><span class="sym">LGX</span><span class="pr">$0.00043608</span><span class="chg down">▼ -1.79%</span></span><span class="pc-tick" data-tick="BTC"><span class="sym">BTC</span><span class="pr">$57,983.00</span><span class="chg down">▼ -6.11%</span></span><span class="pc-tick" data-tick="ETH"><span class="sym">ETH</span><span class="pr">$1,631.49</span><span class="chg down">▼ -6.61%</span></span><span class="pc-tick" data-tick="BNB"><span class="sym">BNB</span><span class="pr">$525.12</span><span class="chg down">▼ -8.01%</span></span><span class="pc-tick" data-tick="LGX"><span class="sym">LGX</span><span class="pr">$0.00043608</span><span class="chg down">▼ -1.79%</span></span><span class="pc-tick" data-tick="BTC"><span class="sym">BTC</span><span class="pr">$57,983.00</span><span class="chg down">▼ -6.11%</span></span><span class="pc-tick" data-tick="ETH"><span class="sym">ETH</span><span class="pr">$1,631.49</span><span class="chg down">▼ -6.61%</span></span><span class="pc-tick" data-tick="BNB"><span class="sym">BNB</span><span class="pr">$525.12</span><span class="chg down">▼ -8.01%</span></span><span class="pc-tick" data-tick="LGX"><span class="sym">LGX</span><span class="pr">$0.00043608</span><span class="chg down">▼ -1.79%</span></span><span class="pc-tick" data-tick="BTC"><span class="sym">BTC</span><span class="pr">$57,983.00</span><span class="chg down">▼ -6.11%</span></span><span class="pc-tick" data-tick="ETH"><span class="sym">ETH</span><span class="pr">$1,631.49</span><span class="chg down">▼ -6.61%</span></span><span class="pc-tick" data-tick="BNB"><span class="sym">BNB</span><span class="pr">$525.12</span><span class="chg down">▼ -8.01%</span></span></span></div>
   </div>
   <div class="pc-chart-card">
     <div class="pc-toolbar">
@@ -368,6 +381,48 @@ async function refreshCandles(){
 }
 refreshCandles();
 setInterval(refreshCandles, 60000);
+})();
+</script>
+<script>
+(function(){
+  function T8(p){ var st = p.toFixed(12); return st.slice(0, st.indexOf('.')+9); }
+  function money(p){ return '$' + p.toLocaleString('en-US',{minimumFractionDigits:2, maximumFractionDigits:2}); }
+  function setTick(sym, priceTxt, chg){
+    document.querySelectorAll('[data-tick="' + sym + '"]').forEach(function(el){
+      el.querySelector('.pr').textContent = priceTxt;
+      var c = el.querySelector('.chg');
+      var up = chg >= 0;
+      c.textContent = (up ? '\u25b2 +' : '\u25bc ') + chg.toFixed(2) + '%';
+      c.className = 'chg ' + (up ? 'up' : 'down');
+    });
+  }
+  async function refresh(){
+    try {
+      var r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true');
+      var d = await r.json();
+      if(d.bitcoin) setTick('BTC', money(d.bitcoin.usd), d.bitcoin.usd_24h_change);
+      if(d.ethereum) setTick('ETH', money(d.ethereum.usd), d.ethereum.usd_24h_change);
+      if(d.binancecoin) setTick('BNB', money(d.binancecoin.usd), d.binancecoin.usd_24h_change);
+    } catch(e) {}
+    try {
+      var r2 = await fetch('https://li.quest/v1/token?chain=56&token=0xbec041bc90cae81596df063c3eee4e858fc3903d');
+      var d2 = await r2.json();
+      var p = parseFloat(d2.priceUSD);
+      if(isFinite(p)){
+        var chg = -1.79;
+        try {
+          var r3 = await fetch('https://api.geckoterminal.com/api/v2/networks/bsc/pools/0x81708da24aae60f99bcb1c5a37a9c92a07b643e4/ohlcv/day?aggregate=1&limit=10&currency=usd&token=base');
+          var d3 = await r3.json();
+          var lst = ((d3.data || {}).attributes || {}).ohlcv_list || [];
+          lst.sort(function(a,b){ return b[0]-a[0]; });
+          if(lst.length >= 2){ var last = lst[0][4], prev = lst[1][4]; if(prev) chg = (last - prev)/prev*100; }
+        } catch(e) {}
+        setTick('LGX', '$' + T8(p), chg);
+      }
+    } catch(e) {}
+  }
+  refresh();
+  setInterval(refresh, 60000);
 })();
 </script>
 </body>
