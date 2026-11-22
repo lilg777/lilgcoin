@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary - LiLGcoin - Open source P2P money</title>
+<meta name="description" content="Plain-English definitions of the crypto words used across lilgcoin.org — wallet, seed phrase, contract address, BEP-20, liquidity, slippage, gas and more.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiLGcoin">
+<meta property="og:title" content="Glossary - LiLGcoin - Open source P2P money">
+<meta property="og:description" content="Plain-English definitions of the crypto words used across lilgcoin.org — wallet, seed phrase, contract address, BEP-20, liquidity, slippage, gas and more.">
+<meta property="og:url" content="https://lilgcoin.org/glossary.html">
+<meta property="og:image" content="https://lilgcoin.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glossary - LiLGcoin - Open source P2P money">
+<meta name="twitter:description" content="Plain-English definitions of the crypto words used across lilgcoin.org — wallet, seed phrase, contract address, BEP-20, liquidity, slippage, gas and more.">
+<meta name="twitter:image" content="https://lilgcoin.org/og-image.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
+  .nav a.active { color: #c89300; font-weight: 700; }
+  .faq { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
+  .faq h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 40px; }
+  .faq h2 { font-size: 24px; color: #222; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #eee; }
+  .faq h2:first-of-type { border-top: none; padding-top: 0; }
+  .faq h3 { font-size: 19px; color: #222; margin: 24px 0 6px; }
+  .faq p, .faq li { color: #444; font-size: 17px; }
+  .faq p { margin-bottom: 14px; }
+  .faq ul { padding-left: 22px; }
+  .faq li { margin-bottom: 8px; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
+  .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
+  .footer-col a:hover { color: #c89300; }
+  footer p { color: #999; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="index.html">Introduction</a>
+    <a href="index.html#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a href="price.html">Price</a>
+    <a class="active" href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+  </details>
+  <a class="direct" href="price.html">Price</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+<div class="faq">
+<h1>Glossary</h1>
+<p>New to crypto? This page explains, in plain English, the technical words used across lilgcoin.org. Tap any word to jump straight to it.</p>
+<p><a href="#address">Address</a> · <a href="#bep-20">BEP-20</a> · <a href="#binance-smart-chain">Binance Smart Chain</a> · <a href="#blockchain">Blockchain</a> · <a href="#bnb">BNB</a> · <a href="#bscscan">BscScan</a> · <a href="#contract-address">Contract address</a> · <a href="#cryptocurrency">Cryptocurrency</a> · <a href="#dex">DEX</a> · <a href="#gas-fees">Gas fees</a> · <a href="#liquidity">Liquidity</a> · <a href="#peer-to-peer">Peer-to-peer</a> · <a href="#private-key">Private key</a> · <a href="#seed-phrase">Seed phrase</a> · <a href="#slippage">Slippage</a> · <a href="#smart-contract">Smart contract</a> · <a href="#stablecoin">Stablecoin</a> · <a href="#swap">Swap</a> · <a href="#token">Token</a> · <a href="#wallet">Wallet</a></p>
+<h3 id="address">Address</h3>
+<p>Your wallet’s public receiving address — a long string of letters and numbers that starts with 0x on Binance Smart Chain. It works like an account number: it is safe to share so people can send you LGX, because an address can receive money, never send it.</p>
+<h3 id="bep-20">BEP-20</h3>
+<p>The standard that tokens on Binance Smart Chain follow — a shared rulebook that lets every wallet, exchange and app handle a token the same way. LGX is a BEP-20 token.</p>
+<h3 id="binance-smart-chain">Binance Smart Chain (BSC)</h3>
+<p>The blockchain network LGX runs on. It is built for speed and low cost — most transfers settle in seconds and cost a fraction of a cent in fees. It is also called BNB Smart Chain.</p>
+<h3 id="blockchain">Blockchain</h3>
+<p>A public record book of transactions, kept by thousands of computers around the world instead of one company. Once a transaction is written into it, nobody can erase or change it.</p>
+<h3 id="bnb">BNB</h3>
+<p>The main coin of Binance Smart Chain. BNB is used to pay gas fees, so you need a small amount of it in your wallet to send LGX or make swaps — a few cents’ worth is usually plenty.</p>
+<h3 id="bscscan">BscScan</h3>
+<p>A free website (<a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">bscscan.com</a>) where anyone can look up transactions, wallet balances and tokens on Binance Smart Chain. It is how you confirm a payment really went through — a public receipt book for the whole network.</p>
+<h3 id="contract-address">Contract address</h3>
+<p>The unique ID of a token on the blockchain — no two tokens share one. Names and symbols can be copied by scammers; a contract address cannot. That is why you should always copy LGX’s address from <a href="price.html">this site</a> and never from a screenshot or a stranger’s post.</p>
+<h3 id="cryptocurrency">Cryptocurrency</h3>
+<p>Digital money that runs on a blockchain instead of through banks. Anyone can use it without asking permission, and it can be sent anywhere in the world.</p>
+<h3 id="dex">DEX (decentralized exchange)</h3>
+<p>A website or app that lets you trade one token for another directly from your own wallet — no account to open and no company holding your money. The swap tool on our Buy page is powered by one.</p>
+<h3 id="gas-fees">Gas fees</h3>
+<p>The small fee paid to the network every time you send or swap tokens. On Binance Smart Chain, gas is paid in BNB and usually costs less than a cent.</p>
+<h3 id="liquidity">Liquidity</h3>
+<p>How easily a token can be bought or sold without its price jumping around. Deep liquidity in a trading pool means smooth trades; thin liquidity — like LGX has today — means even small trades can move the price.</p>
+<h3 id="peer-to-peer">Peer-to-peer (P2P)</h3>
+<p>Directly from one person to another, with no middleman in between. Sending LGX wallet-to-wallet is peer-to-peer: no bank approves the payment or takes a cut.</p>
+<h3 id="private-key">Private key</h3>
+<p>The secret code that proves a wallet is yours and allows money to be spent from it. Your wallet app guards it for you. Never share it — anyone who has it can take everything in the wallet, and nobody legitimate will ever ask for it.</p>
+<h3 id="seed-phrase">Seed phrase</h3>
+<p>A list of 12 to 24 words your wallet gives you when you create it — the master backup of the whole wallet. Type those words into a new wallet and your money is back. Write them on paper, keep them somewhere safe, and never share them or type them into a website: that is the number one way people lose crypto. See <a href="wallets.html">Choose your wallet</a>.</p>
+<h3 id="slippage">Slippage</h3>
+<p>The difference between the price you expect when you start a swap and the price you actually get, because the market moved while the trade went through. Thin markets have more slippage, which is why smaller trades get a better rate.</p>
+<h3 id="smart-contract">Smart contract</h3>
+<p>A program that lives on the blockchain and runs exactly as it was written — no company operates it and nobody can change the rules mid-game. LGX itself is a smart contract, and so are the trading pools where it is swapped.</p>
+<h3 id="stablecoin">Stablecoin</h3>
+<p>A token designed to hold a steady value, usually tied to the US dollar — USDT and USDC are the best known. One dollar of a stablecoin is meant to always be worth one dollar.</p>
+<h3 id="swap">Swap</h3>
+<p>Trading one token for another — for example, BNB for LGX. On this site you can swap right on the <a href="buy-lgx.html">Buy page</a>; your wallet handles the rest.</p>
+<h3 id="token">Token</h3>
+<p>A coin-like asset created on an existing blockchain instead of on its own network. LGX is a token on Binance Smart Chain. People often say "coin" for both — the difference is only where it lives.</p>
+<h3 id="wallet">Wallet</h3>
+<p>The app that holds your crypto keys and lets you send and receive — Trust Wallet and MetaMask are examples. A wallet does not store coins inside it like a piggy bank: the coins live on the blockchain, and the wallet holds the keys that control them. See <a href="wallets.html">Choose your wallet</a>.</p>
+<p>Still stuck on something? Try the <a href="faq.html">FAQ</a> — it answers the questions people ask most.</p>
+</div>
+<footer>
+  <div class="footer-cols">
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Introduction:</h4>
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources:</h4>
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+    </div>
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Participate:</h4>
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+    </div>
+    <div class="footer-col">
+      <h4>Other:</h4>
+      <a href="price.html">Price</a>
+      <a href="index.html">About LiLGcoin</a>
+      <a href="mailto:lilgcoinx@gmail.com">Contact</a>
+      <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+</body>
+</html>
