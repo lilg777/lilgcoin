@@ -109,6 +109,11 @@
   .pc-tick .sym { font-weight: 700; letter-spacing: .04em; color: #fff; }
   .pc-tick .chg.up { color: #2fbf71; font-weight: 700; }
   .pc-tick .chg.down { color: #ff5a52; font-weight: 700; }
+
+  .pc-contract { margin-top: 14px; background: #0e0f11; border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .pc-contract-label { color: #9aa3ad; font-size: 12px; font-weight: 700; letter-spacing: .08em; white-space: nowrap; }
+  .pc-contract-addr { color: #e8eaed; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13.5px; word-break: break-all; flex: 1; min-width: 210px; }
+  .pc-copy-btn { background: #FFD54A; color: #111; border: none; font-weight: 700; font-size: 14px; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-family: inherit; }
 </style>
 </head>
 <body>
@@ -194,6 +199,15 @@
     <div id="readout"></div>
   </div>
   <p class="pc-fine">Data: LI.FI and GeckoTerminal (PancakeSwap LGX/BTCB pool). The price checks every 30 seconds; the candles refresh every minute. Candles appear only on days with trades — LGX trading is sparse, so quiet stretches are compressed.</p>
+<div class="pc-contract"><span class="pc-contract-label">LGX CONTRACT · BSC</span><span class="pc-contract-addr">0xbec041bc90cae81596df063c3eee4e858fc3903d</span><button class="pc-copy-btn" type="button" onclick="copyLgxContract(this)">Copy</button></div>
+<script>
+function copyLgxContract(btn){
+  var addr = '0xbec041bc90cae81596df063c3eee4e858fc3903d';
+  function done(){ btn.textContent = 'Copied \u2713'; setTimeout(function(){ btn.textContent = 'Copy'; }, 2000); }
+  function fallback(){ var t = document.createElement('textarea'); t.value = addr; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch(e) {} t.remove(); done(); }
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(addr).then(done).catch(fallback); } else { fallback(); }
+}
+</script>
 </div>
 
 <footer>

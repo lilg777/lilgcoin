@@ -6398,6 +6398,15 @@ ${JSON.stringify(Ot,null,2)}`,(0,Gl.getErrorTypeFromErrorMessage)(Ot.error,Ot.er
   </div>
   <p class="widget-disclaimer">The above widget is provided by a third party provider (<a href="https://openocean.finance">OpenOcean</a>) and is not associated with lilgcoin.org.</p>
   <p class="swap-alt">Prefer the OpenOcean app? <a href="https://app.openocean.finance/swap/bsc/LGX_0xbec041bc90cae81596df063c3eee4e858fc3903d/BNB">Swap there instead</a> — use Advanced, not Ultra. Prefer PancakeSwap? <a href="https://pancakeswap.finance/swap?inputCurrency=0xbec041bc90cae81596df063c3eee4e858fc3903d&outputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c">Swap there instead</a>.</p>
+<div style="max-width:680px; margin:20px auto 0; background:#f7f7f7; border:1px solid #e5e5e5; border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;"><span style="font-size:12px; font-weight:700; letter-spacing:.08em; color:#777; white-space:nowrap;">LGX CONTRACT · BSC</span><span style="font-family:ui-monospace, Menlo, Consolas, monospace; font-size:13.5px; color:#333; word-break:break-all; flex:1; min-width:210px;">0xbec041bc90cae81596df063c3eee4e858fc3903d</span><button type="button" onclick="copyLgxContract(this)" style="background:#FFD54A; color:#111; border:none; font-weight:700; font-size:14px; padding:8px 20px; border-radius:999px; cursor:pointer;">Copy</button></div>
+<script>
+function copyLgxContract(btn){
+  var addr = '0xbec041bc90cae81596df063c3eee4e858fc3903d';
+  function done(){ btn.textContent = 'Copied \u2713'; setTimeout(function(){ btn.textContent = 'Copy'; }, 2000); }
+  function fallback(){ var t = document.createElement('textarea'); t.value = addr; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch(e) {} t.remove(); done(); }
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(addr).then(done).catch(fallback); } else { fallback(); }
+}
+</script>
 
   <h2>How it works</h2>
   <ol>
