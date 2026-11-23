@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community - LiLGcoin - Open source P2P money</title>
+<meta name="description" content="Join the LiLGcoin community: LGX Commons for everyday chat, LGX Signals for announcements, the LGX Steward Desk for admin help, plus official social channels and development links.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiLGcoin">
+<meta property="og:title" content="Community - LiLGcoin - Open source P2P money">
+<meta property="og:description" content="Join the LiLGcoin community: LGX Commons for everyday chat, LGX Signals for announcements, the LGX Steward Desk for admin help, plus official social channels and development links.">
+<meta property="og:url" content="https://lilgcoin.org/community.html">
+<meta property="og:image" content="https://lilgcoin.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community - LiLGcoin - Open source P2P money">
+<meta name="twitter:description" content="Join the LiLGcoin community: LGX Commons for everyday chat, LGX Signals for announcements, the LGX Steward Desk for admin help, plus official social channels and development links.">
+<meta name="twitter:image" content="https://lilgcoin.org/og-image.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
+  .nav a.active { color: #c89300; font-weight: 700; }
+  .faq { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
+  .faq h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 40px; }
+  .faq h2 { font-size: 24px; color: #222; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #eee; }
+  .faq h2:first-of-type { border-top: none; padding-top: 0; }
+  .faq h3 { font-size: 19px; color: #222; margin: 24px 0 6px; }
+  .faq p, .faq li { color: #444; font-size: 17px; }
+  .faq p { margin-bottom: 14px; }
+  .faq ul { padding-left: 22px; }
+  .faq li { margin-bottom: 8px; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
+  .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
+  .footer-col a:hover { color: #c89300; }
+  footer p { color: #999; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="index.html">Introduction</a>
+    <a href="index.html#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a href="price.html">Price</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+      <a href="community.html">Community</a>
+    </div>
+  </details>
+  <a class="direct" href="price.html">Price</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+<div class="faq">
+<h1>Community</h1>
+<p>LiLGcoin is open-source and community-run. There is no company behind LGX — the people who hold it, use it and build on it are the project. This page is the map of where the community lives.</p>
+<h2>Join the conversation</h2>
+<p>The LiLGcoin Foundation community on Messenger is the front door. Join the group, say hello, and from there you can reach the community rooms:</p>
+<p><a href="https://m.me/cm/AbbFU5Ac8nAiXtkq/">Join the LiLGcoin Foundation group</a></p>
+<h3>LGX Commons</h3>
+<p>The main chat — everyday conversation, questions and advice from other holders. New to LGX? Start here.</p>
+<h3>LGX Signals</h3>
+<p>Announcements only. Verified LiLGcoin news — new pages, new features, important updates — with none of the noise.</p>
+<h3>LGX Steward Desk</h3>
+<p>Admin help. If something is broken, a link is wrong, or you need a hand from the team, this is the desk to knock on.</p>
+<h2>Follow LiLGcoin</h2>
+<ul>
+<li><a href="https://x.com/lilgcoin">X (Twitter) — @lilgcoin</a></li>
+<li><a href="https://facebook.com/LiLGcoin">Facebook — the LiLGcoin page</a></li>
+<li><a href="https://instagram.com/lilgcoin_official">Instagram — @lilgcoin_official</a></li>
+<li><a href="https://tiktok.com/@lilgcoin">TikTok — @lilgcoin</a></li>
+<li><a href="https://youtube.com/channel/UC4yEox4N0ZpLr4lJg4w5wQg">YouTube — the LiLGcoin channel</a></li>
+</ul>
+<h2>Development and discussion</h2>
+<p>LiLGcoin is open-source. The code, the white paper and the project history live on <a href="https://github.com/lilg777/lilgcoin">GitHub</a> — issues and contributions are welcome. Longer-form discussion runs on <a href="https://bitcointalk.org/index.php?topic=5350338.0">BitcoinTalk</a>, where LiLGcoin was first announced in 2021.</p>
+<h2>Stay safe</h2>
+<p>Only trust links from this page. LiLGcoin admins will never message you first asking for money, and nobody from the project will ever ask for your seed phrase or private key — anyone who does is a scammer, whatever their profile says. If you are ever unsure whether an account is really ours, check it against the links here.</p>
+<p>Brand new? The <a href="faq.html">FAQ</a> answers the questions people ask most, and the <a href="glossary.html">Glossary</a> explains the crypto words in plain English.</p>
+</div>
+<footer>
+  <div class="footer-cols">
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Introduction:</h4>
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources:</h4>
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+    </div>
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Participate:</h4>
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+      <a href="community.html">Community</a>
+    </div>
+    <div class="footer-col">
+      <h4>Other:</h4>
+      <a href="price.html">Price</a>
+      <a href="index.html">About LiLGcoin</a>
+      <a href="mailto:lilgcoinx@gmail.com">Contact</a>
+      <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+</body>
+</html>
