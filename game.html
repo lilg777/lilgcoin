@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LGX Coin Catch - LiLGcoin - Open source P2P money</title>
+<meta name="description" content="Play LGX Coin Catch, the free LiLGcoin browser game. Catch falling LGX coins in your wallet, dodge the scam coins. No downloads, no wallet needed.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiLGcoin">
+<meta property="og:title" content="LGX Coin Catch - LiLGcoin - Open source P2P money">
+<meta property="og:description" content="Play LGX Coin Catch, the free LiLGcoin browser game. Catch falling LGX coins in your wallet, dodge the scam coins. No downloads, no wallet needed.">
+<meta property="og:url" content="https://lilgcoin.org/game.html">
+<meta property="og:image" content="https://lilgcoin.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LGX Coin Catch - LiLGcoin - Open source P2P money">
+<meta name="twitter:description" content="Play LGX Coin Catch, the free LiLGcoin browser game. Catch falling LGX coins in your wallet, dodge the scam coins. No downloads, no wallet needed.">
+<meta name="twitter:image" content="https://lilgcoin.org/og-image.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
+  .nav a.active { color: #c89300; font-weight: 700; }
+  .faq { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
+  .faq h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 40px; }
+  .faq h2 { font-size: 24px; color: #222; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #eee; }
+  .faq h2:first-of-type { border-top: none; padding-top: 0; }
+  .faq h3 { font-size: 19px; color: #222; margin: 24px 0 6px; }
+  .faq p, .faq li { color: #444; font-size: 17px; }
+  .faq p { margin-bottom: 14px; }
+  .faq ul { padding-left: 22px; }
+  .faq li { margin-bottom: 8px; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
+  .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
+  .footer-col a:hover { color: #c89300; }
+  footer p { color: #999; font-size: 14px; }
+
+  .game-wrap { position: relative; max-width: 520px; margin: 26px auto 10px; background: #0e1116; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 34px rgba(0,0,0,.22); }
+  .game-hud { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; color: #e8ecf1; font-size: 15px; border-bottom: 1px solid #1e242e; }
+  .game-hud strong { color: #FFD54A; }
+  #lives { color: #ff6b6b; letter-spacing: 2px; }
+  canvas#game { display: block; width: 100%; height: auto; touch-action: none; }
+  .game-overlay { position: absolute; left: 0; right: 0; bottom: 0; top: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; background: rgba(9,11,15,.85); }
+  .game-overlay h2 { color: #FFD54A; font-size: 29px; margin: 0 0 10px; padding: 0; border: none; }
+  .game-overlay p { color: #c8cdd4; max-width: 390px; margin-bottom: 8px; }
+  .game-overlay .btn { margin-top: 12px; cursor: pointer; border: 1px solid #e8b800; background: #FFD54A; color: #222; font-weight: 700; border-radius: 4px; padding: 12px 30px; font-size: 17px; font-family: inherit; }
+  .game-overlay.hidden { display: none; }
+  .game-note { text-align: center; color: #888; font-size: 14px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="index.html">Introduction</a>
+    <a href="index.html#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a href="price.html">Price</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+      <a href="community.html">Community</a>
+      <a href="game.html">LGX Coin Catch</a>
+    </div>
+  </details>
+  <a class="direct" href="price.html">Price</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+<div class="faq">
+<h1>LGX Coin Catch</h1>
+<p>The first LiLGcoin game — free, right in your browser. Catch the falling LGX in your wallet, and dodge the scam coins. No downloads, no wallet, no sign-up.</p>
+<div class="game-wrap">
+  <div class="game-hud">
+    <div>Score <strong id="score">0</strong></div>
+    <div>LGX caught <strong id="caught">0</strong></div>
+    <div><span id="lives">❤❤❤</span></div>
+  </div>
+  <canvas id="game" width="520" height="520"></canvas>
+  <div class="game-overlay" id="overlay">
+    <h2 id="ovTitle">LGX Coin Catch</h2>
+    <p id="ovText">Drag the wallet to catch falling LGX coins. Gold coins score — scam coins cost a heart. Catch 3 scams and it is game over.</p>
+    <button class="btn" id="startBtn">Start</button>
+  </div>
+</div>
+<p class="game-note">Move with your finger, your mouse, or the &#8592; &#8594; arrow keys. It speeds up as you go.</p>
+<h2>How to play</h2>
+<ul>
+<li><strong>Gold coins marked &#8370;</strong> — catch them: +10 points. The big ones are worth +50.</li>
+<li><strong>Scam coins</strong> (dark, with a skull) — dodge them. Each one you catch costs a heart, and 3 hearts end the game.</li>
+<li><strong>Missed LGX does not hurt you.</strong> Only scams do — just like real crypto.</li>
+</ul>
+<p>It is the golden rule in game form: grab the real thing, dodge the scams. New here? The <a href="faq.html">FAQ</a> explains LiLGcoin, and the <a href="community.html">Community</a> page is where the players hang out.</p>
+</div>
+<footer>
+  <div class="footer-cols">
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Introduction:</h4>
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources:</h4>
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+    </div>
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Participate:</h4>
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+      <a href="community.html">Community</a>
+      <a href="game.html">LGX Coin Catch</a>
+    </div>
+    <div class="footer-col">
+      <h4>Other:</h4>
+      <a href="price.html">Price</a>
+      <a href="index.html">About LiLGcoin</a>
+      <a href="mailto:lilgcoinx@gmail.com">Contact</a>
+      <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('game');
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var scoreEl = document.getElementById('score');
+  var caughtEl = document.getElementById('caught');
+  var livesEl = document.getElementById('lives');
+  var overlay = document.getElementById('overlay');
+  var ovTitle = document.getElementById('ovTitle');
+  var ovText = document.getElementById('ovText');
+  var startBtn = document.getElementById('startBtn');
+  var running = false, startTime = 0, lastSpawn = 0;
+  var score = 0, caught = 0, lives = 3;
+  var player = { x: W / 2, w: 88, h: 46, y: H - 64 };
+  var items = [], floaters = [], shake = 0, redFlash = 0;
+  var keys = {};
+  var best = 0;
+  try { best = parseInt(localStorage.getItem('lgxCoinCatchBest') || '0', 10) || 0; } catch (e) {}
+
+  function updateHud() {
+    scoreEl.textContent = score;
+    caughtEl.textContent = caught;
+    livesEl.textContent = lives > 0 ? '\u2764'.repeat(lives) : '';
+  }
+  function reset() {
+    score = 0; caught = 0; lives = 3; items = []; floaters = [];
+    player.x = W / 2; updateHud();
+  }
+  function spawn(e) {
+    var roll = Math.random();
+    var type = roll < 0.07 ? 'big' : (roll < 0.32 ? 'scam' : 'lgx');
+    var r = type === 'big' ? 22 : 16;
+    items.push({ x: r + Math.random() * (W - 2 * r), y: -r, r: r, type: type,
+                 vy: (2.1 + Math.random() * 1.3) * (1 + e * 0.012) });
+  }
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function drawCoin(it) {
+    ctx.save(); ctx.translate(it.x, it.y);
+    if (it.type === 'scam') {
+      ctx.beginPath(); ctx.arc(0, 0, it.r, 0, 7);
+      ctx.fillStyle = '#3a3f47'; ctx.fill();
+      ctx.lineWidth = 3; ctx.strokeStyle = '#c0392b'; ctx.stroke();
+      ctx.font = (it.r * 1.05) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('\uD83D\uDC80', 0, 1);
+    } else {
+      var g = ctx.createRadialGradient(-it.r * 0.3, -it.r * 0.3, it.r * 0.2, 0, 0, it.r);
+      g.addColorStop(0, '#ffe082'); g.addColorStop(1, '#f5b301');
+      ctx.beginPath(); ctx.arc(0, 0, it.r, 0, 7);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.lineWidth = 2.5; ctx.strokeStyle = '#b97e00'; ctx.stroke();
+      ctx.fillStyle = '#7a5200';
+      ctx.font = 'bold ' + (it.r * 1.05) + 'px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('\u20B2', 0, 1);
+    }
+    ctx.restore();
+  }
+  function drawWallet() {
+    var x = player.x - player.w / 2, y = player.y;
+    roundRect(x, y, player.w, player.h, 10);
+    ctx.fillStyle = '#1c2534'; ctx.fill();
+    ctx.lineWidth = 2.5; ctx.strokeStyle = '#FFD54A'; ctx.stroke();
+    roundRect(x, y, player.w, 14, 7);
+    ctx.fillStyle = '#FFD54A'; ctx.fill();
+    ctx.beginPath(); ctx.arc(player.x, y + 30, 9, 0, 7);
+    ctx.fillStyle = '#0e1116'; ctx.fill();
+    ctx.fillStyle = '#FFD54A'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('\u20B2', player.x, y + 30.5);
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    if (shake > 0) { ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake); shake--; }
+    var bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, '#12161d'); bg.addColorStop(1, '#0e1116');
+    ctx.fillStyle = bg; ctx.fillRect(-24, -24, W + 48, H + 48);
+    ctx.fillStyle = '#1e242e'; ctx.fillRect(0, player.y + player.h + 8, W, 2);
+    for (var i = 0; i < items.length; i++) drawCoin(items[i]);
+    drawWallet();
+    for (var j = floaters.length - 1; j >= 0; j--) {
+      var f = floaters[j];
+      ctx.globalAlpha = Math.max(f.a, 0);
+      ctx.fillStyle = '#FFD54A'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(f.text, f.x, f.y);
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+    if (redFlash > 0) {
+      ctx.fillStyle = 'rgba(220,40,40,' + (redFlash / 8 * 0.22) + ')';
+      ctx.fillRect(0, 0, W, H); redFlash--;
+    }
+  }
+  function frame(now) {
+    if (!running) return;
+    var e = (now - startTime) / 1000;
+    if (now - lastSpawn > Math.max(300, 720 - e * 6)) { spawn(e); lastSpawn = now; }
+    if (keys.left) player.x = Math.max(player.w / 2, player.x - 6);
+    if (keys.right) player.x = Math.min(W - player.w / 2, player.x + 6);
+    for (var i = items.length - 1; i >= 0; i--) {
+      var it = items[i];
+      it.y += it.vy;
+      if (it.y + it.r >= player.y && it.y - it.r < player.y + player.h &&
+          Math.abs(it.x - player.x) < player.w / 2 + it.r * 0.4) {
+        if (it.type === 'scam') { lives--; shake = 12; redFlash = 8; }
+        else {
+          var pts = it.type === 'big' ? 50 : 10;
+          score += pts; caught++;
+          floaters.push({ x: it.x, y: player.y - 8, text: '+' + pts, a: 1 });
+        }
+        items.splice(i, 1); updateHud(); continue;
+      }
+      if (it.y - it.r > H) items.splice(i, 1);
+    }
+    for (var k = floaters.length - 1; k >= 0; k--) {
+      floaters[k].y -= 0.8; floaters[k].a -= 0.02;
+      if (floaters[k].a <= 0) floaters.splice(k, 1);
+    }
+    draw();
+    if (lives <= 0) { gameOver(); return; }
+    requestAnimationFrame(frame);
+  }
+  function gameOver() {
+    running = false;
+    if (score > best) {
+      best = score;
+      try { localStorage.setItem('lgxCoinCatchBest', String(best)); } catch (e) {}
+    }
+    ovTitle.textContent = 'Game over';
+    ovText.textContent = 'You caught ' + caught + ' LGX for ' + score + ' points. Best score: ' + best + '.';
+    startBtn.textContent = 'Play again';
+    overlay.classList.remove('hidden');
+    draw();
+  }
+  startBtn.addEventListener('click', function () {
+    reset();
+    overlay.classList.add('hidden');
+    running = true;
+    startTime = performance.now(); lastSpawn = 0;
+    requestAnimationFrame(frame);
+  });
+  function moveTo(clientX) {
+    var rect = canvas.getBoundingClientRect();
+    var x = (clientX - rect.left) * (W / rect.width);
+    player.x = Math.max(player.w / 2, Math.min(W - player.w / 2, x));
+  }
+  canvas.addEventListener('pointermove', function (ev) { moveTo(ev.clientX); });
+  canvas.addEventListener('pointerdown', function (ev) { moveTo(ev.clientX); });
+  window.addEventListener('keydown', function (ev) {
+    if (ev.key === 'ArrowLeft') keys.left = true;
+    if (ev.key === 'ArrowRight') keys.right = true;
+  });
+  window.addEventListener('keyup', function (ev) {
+    if (ev.key === 'ArrowLeft') keys.left = false;
+    if (ev.key === 'ArrowRight') keys.right = false;
+  });
+  reset();
+  draw();
+})();
+</script>
+</body>
+</html>
