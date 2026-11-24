@@ -104,6 +104,17 @@
   .pick-row button { padding: 9px 14px; font-size: 15px; }
   .pick-row button.picked { background: #fff; color: #8a6d00; }
   .earn-note { text-align: center; color: #888; font-size: 14px; margin-top: 26px; }
+  .faucet-card { background: #0e1116; border-radius: 14px; padding: 22px 20px; text-align: center; margin: 0 auto 28px; box-shadow: 0 10px 34px rgba(0,0,0,.22); color: #e8ecf1; }
+  .faucet-card .label { color: #9aa3ad; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  .faucet-card h3 { color: #FFD54A; font-size: 21px; margin: 6px 0 4px; padding: 0; border: none; }
+  .faucet-card p { color: #c8cdd4; font-size: 15px; margin-bottom: 10px; }
+  .faucet-card .sub { color: #9aa3ad; font-size: 15px; margin-bottom: 14px; }
+  .faucet-card .sub strong { color: #FFD54A; }
+  .faucet-card .btn { cursor: pointer; border: 1px solid #e8b800; background: #FFD54A; color: #222; font-weight: 700; border-radius: 4px; padding: 11px 22px; font-size: 16px; font-family: inherit; margin: 4px 4px 0; }
+  .faucet-card .btn.ghost { background: transparent; color: #FFD54A; border-color: #FFD54A; }
+  .faucet-card .btn:disabled { opacity: .5; cursor: default; }
+  .faucet-card .status { min-height: 24px; color: #FFD54A; font-size: 15px; margin-top: 12px; }
+  .faucet-card .status small { color: #9aa3ad; }
   .toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); background: #0e1116; color: #FFD54A; border: 1px solid #e8b800; border-radius: 8px; padding: 12px 20px; font-weight: 700; font-size: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 50; white-space: nowrap; }
   .toast.show { opacity: 1; }
 </style>
@@ -178,6 +189,16 @@
   <div class="label">Your LGX earned</div>
   <div class="total"><span>&#8370;</span> <span id="balance">0</span></div>
   <div class="sub">Today: <strong id="todayEarned">+0 LGX</strong> &nbsp;&middot;&nbsp; Day streak: <strong id="streak">0</strong></div>
+</div>
+
+<div class="faucet-card" id="faucetCard">
+  <div class="label">Daily Faucet — real LGX</div>
+  <h3>🚰 Claim real LGX, once a day</h3>
+  <p>The old-school Bitcoin faucet, LiLGcoin style. Connect your wallet and claim a fixed amount of real LGX every 24 hours, until the pool runs out. You pay the small BSC gas fee for the claim — the LGX itself is free.</p>
+  <div class="sub">Pool: <strong id="poolBalance">…</strong> &nbsp;·&nbsp; Daily claim: <strong id="dailyClaim">…</strong> &nbsp;·&nbsp; Next claim: <strong id="nextClaim">…</strong></div>
+  <button class="btn ghost" id="connectBtn">Connect wallet</button>
+  <button class="btn" id="claimBtn" disabled>Claim LGX</button>
+  <div class="status" id="faucetStatus">Faucet contract deploying soon — check back.</div>
 </div>
 
 <h2>Daily tasks</h2>
@@ -448,6 +469,118 @@
 
   render();
   save();
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script>
+(function () {
+  // Fill this in once the faucet contract is deployed (see contracts/README.md).
+  var FAUCET_ADDRESS = "";
+  var LGX_DECIMALS = 16;
+  var FAUCET_ABI = [
+    "function claim()",
+    "function poolBalance() view returns (uint256)",
+    "function claimAmount() view returns (uint256)",
+    "function nextClaimAt(address user) view returns (uint256)",
+    "function lastClaim(address user) view returns (uint256)"
+  ];
+  var poolEl = document.getElementById('poolBalance');
+  var dailyEl = document.getElementById('dailyClaim');
+  var nextEl = document.getElementById('nextClaim');
+  var statusEl = document.getElementById('faucetStatus');
+  var connectBtn = document.getElementById('connectBtn');
+  var claimBtn = document.getElementById('claimBtn');
+  var provider = null, signer = null, faucet = null, account = null;
+
+  function fmt(v) {
+    try { return Number(window.ethers.utils.formatUnits(v, LGX_DECIMALS)).toLocaleString(); }
+    catch (e) { return '…'; }
+  }
+  function fmtTime(ts) {
+    var now = Math.floor(Date.now() / 1000);
+    if (!ts || ts <= now) return 'ready now';
+    var s = ts - now, h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+    if (h > 0) return 'in ' + h + 'h ' + m + 'm';
+    return 'in ' + m + 'm';
+  }
+  async function refresh() {
+    if (!faucet) return;
+    try {
+      var pool = await faucet.poolBalance();
+      var amt = await faucet.claimAmount();
+      poolEl.textContent = fmt(pool) + ' LGX';
+      dailyEl.textContent = fmt(amt) + ' LGX';
+      document.getElementById('claimBtn').textContent = 'Claim ' + fmt(amt) + ' LGX';
+      if (account) {
+        var next = await faucet.nextClaimAt(account);
+        nextEl.textContent = fmtTime(Number(next));
+        claimBtn.disabled = Number(next) > Math.floor(Date.now() / 1000);
+      } else {
+        nextEl.textContent = 'connect wallet to check';
+      }
+    } catch (e) { statusEl.textContent = 'Could not read the faucet — try again in a moment.'; }
+  }
+  async function connect() {
+    if (!window.ethereum) {
+      statusEl.textContent = 'No wallet found — install MetaMask or open this page in Trust Wallet.';
+      return;
+    }
+    try {
+      provider = new window.ethers.providers.Web3Provider(window.ethereum);
+      await provider.send('eth_requestAccounts', []);
+      var net = await provider.getNetwork();
+      if (net.chainId !== 56) {
+        try {
+          await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x38' }] });
+        } catch (e) {
+          statusEl.textContent = 'Please switch your wallet to BNB Smart Chain (chain 56).';
+          return;
+        }
+      }
+      signer = provider.getSigner();
+      account = await signer.getAddress();
+      faucet = new window.ethers.Contract(FAUCET_ADDRESS, FAUCET_ABI, signer);
+      connectBtn.textContent = 'Connected: ' + account.slice(0, 6) + '…' + account.slice(-4);
+      statusEl.textContent = 'Wallet connected. One claim every 24 hours — you pay the small gas fee.';
+      refresh();
+    } catch (e) { statusEl.textContent = 'Wallet connection was not completed.'; }
+  }
+  connectBtn.addEventListener('click', connect);
+  claimBtn.addEventListener('click', async function () {
+    if (!faucet || !account) { statusEl.textContent = 'Connect your wallet first.'; return; }
+    claimBtn.disabled = true;
+    statusEl.textContent = 'Sending your claim — confirm it in your wallet…';
+    try {
+      var tx = await faucet.claim();
+      statusEl.textContent = 'Claim sent — waiting for confirmation…';
+      await tx.wait();
+      statusEl.textContent = 'Claimed! Check your wallet — the LGX is yours.';
+      refresh();
+    } catch (e) {
+      statusEl.textContent = 'Claim did not go through — you may have already claimed today, or the pool is empty.';
+      refresh();
+    }
+  });
+  if (!FAUCET_ADDRESS) {
+    poolEl.textContent = '…';
+    dailyEl.textContent = '…';
+    nextEl.textContent = '…';
+    connectBtn.disabled = true;
+    claimBtn.disabled = true;
+    statusEl.textContent = 'Faucet contract deploying soon — check back.';
+  } else if (typeof window.ethers === 'undefined') {
+    statusEl.textContent = 'Wallet library did not load — check your connection and refresh.';
+  } else {
+    // Read-only provider so the pool balance shows even before connecting a wallet.
+    provider = new window.ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+    faucet = new window.ethers.Contract(FAUCET_ADDRESS, FAUCET_ABI, provider);
+    statusEl.textContent = 'Connect your wallet to claim your daily LGX.';
+    refresh();
+  }
+  if (window.ethereum) {
+    window.ethereum.on('accountsChanged', function () { location.reload(); });
+    window.ethereum.on('chainChanged', function () { location.reload(); });
+  }
 })();
 </script>
 </body>
