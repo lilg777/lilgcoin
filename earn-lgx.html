@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earn LGX - Daily Tasks &amp; Casino Games - LiLGcoin - Open source P2P money</title>
+<meta name="description" content="Earn LGX the free way: finish daily tasks and play casino games right in your browser. No wallet, no deposits, nothing to lose. From the LiLGcoin whitepaper, Section 6: LGX Gaming.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiLGcoin">
+<meta property="og:title" content="Earn LGX - Daily Tasks &amp; Casino Games - LiLGcoin - Open source P2P money">
+<meta property="og:description" content="Earn LGX the free way: finish daily tasks and play casino games right in your browser. No wallet, no deposits, nothing to lose.">
+<meta property="og:url" content="https://lilgcoin.org/earn-lgx.html">
+<meta property="og:image" content="https://lilgcoin.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earn LGX - Daily Tasks &amp; Casino Games - LiLGcoin - Open source P2P money">
+<meta name="twitter:description" content="Earn LGX the free way: finish daily tasks and play casino games right in your browser. No wallet, no deposits, nothing to lose.">
+<meta name="twitter:image" content="https://lilgcoin.org/og-image.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+  a { color: #c89300; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { border-bottom: 1px solid #e5e5e5; }
+  .nav { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 14px 20px; }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #333; margin-right: auto; }
+  .nav .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav a { color: #555; font-size: 15px; }
+  .nav a:hover { color: #c89300; }
+
+  .menu-btn { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px 4px; }
+  .menu-btn svg { display: block; }
+  .mobile-menu { display: none; background: #0e1116; padding: 6px 20px 22px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu details { border-bottom: 1px solid #1e242e; }
+  .mobile-menu summary { list-style: none; cursor: pointer; color: #fff; font-size: 19px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary .chev { width: 10px; height: 10px; border-right: 2px solid #9aa3ad; border-bottom: 2px solid #9aa3ad; transform: rotate(45deg); margin-right: 6px; flex: none; }
+  .mobile-menu details[open] summary .chev { transform: rotate(-135deg); }
+  .mobile-menu .sub a { display: block; color: #c8cdd4; font-size: 17px; padding: 10px 4px 12px 18px; }
+  .mobile-menu .sub a:hover { color: #FFD54A; text-decoration: none; }
+  .mobile-menu > a.direct { display: block; color: #fff; font-size: 19px; padding: 18px 4px; border-bottom: 1px solid #1e242e; }
+  .mobile-menu > a.direct:hover { color: #FFD54A; text-decoration: none; }
+  @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+  @media (max-width: 860px) {
+    .nav > a:not(.brand) { display: none; }
+    .menu-btn { display: block; }
+  }
+  .nav a.active { color: #c89300; font-weight: 700; }
+  .faq { max-width: 760px; margin: 0 auto; padding: 56px 20px 60px; }
+  .faq h1 { font-size: 34px; line-height: 1.25; font-weight: 700; color: #222; text-align: center; margin-bottom: 40px; }
+  .faq h2 { font-size: 24px; color: #222; margin: 36px 0 12px; padding-top: 24px; border-top: 1px solid #eee; }
+  .faq h2:first-of-type { border-top: none; padding-top: 0; }
+  .faq h3 { font-size: 19px; color: #222; margin: 24px 0 6px; }
+  .faq p, .faq li { color: #444; font-size: 17px; }
+  .faq p { margin-bottom: 14px; }
+  .faq ul { padding-left: 22px; }
+  .faq li { margin-bottom: 8px; }
+  code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 2px 8px; font-size: 14px; word-break: break-all; color: #8a6d00; }
+  footer { border-top: 1px solid #e5e5e5; padding: 30px 20px 44px; text-align: center; }
+  .data-links { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 16px; font-size: 15px; }
+  .footer-cols { display: flex; gap: 24px 32px; max-width: 1100px; margin: 0 auto 28px; text-align: left; padding: 0 20px; }
+  .footer-side { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .footer-col h4 { font-size: 17px; color: #222; margin-bottom: 10px; }
+  .footer-col a { display: block; color: #555; font-size: 15px; margin-bottom: 8px; }
+  .footer-col a:hover { color: #c89300; }
+  footer p { color: #999; font-size: 14px; }
+
+  .earn-balance { background: #0e1116; border-radius: 14px; padding: 22px 20px; text-align: center; margin: 0 auto 28px; box-shadow: 0 10px 34px rgba(0,0,0,.22); }
+  .earn-balance .label { color: #9aa3ad; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  .earn-balance .total { color: #FFD54A; font-size: 44px; font-weight: 800; line-height: 1.15; }
+  .earn-balance .total span { font-size: 26px; }
+  .earn-balance .sub { color: #c8cdd4; font-size: 15px; margin-top: 4px; }
+  .earn-balance .sub strong { color: #FFD54A; }
+  .task-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 8px; }
+  .task { display: flex; align-items: center; gap: 14px; background: #f7f7f7; border: 1px solid #e5e5e5; border-radius: 10px; padding: 14px 16px; }
+  .task.done { opacity: .62; }
+  .task .icon { font-size: 26px; flex: none; width: 34px; text-align: center; }
+  .task .body { flex: 1; min-width: 0; }
+  .task .name { font-weight: 700; color: #222; font-size: 16px; }
+  .task .desc { color: #666; font-size: 14px; }
+  .task .reward { color: #8a6d00; font-weight: 700; font-size: 15px; white-space: nowrap; }
+  .task button { flex: none; cursor: pointer; border: 1px solid #e8b800; background: #FFD54A; color: #222; font-weight: 700; border-radius: 4px; padding: 9px 16px; font-size: 15px; font-family: inherit; }
+  .task button:disabled { background: #e5e5e5; border-color: #d5d5d5; color: #888; cursor: default; }
+  .task button.go { background: #fff; border-color: #c89300; color: #8a6d00; }
+  .casino-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 640px) { .casino-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .casino-card { background: #0e1116; border-radius: 14px; padding: 20px 16px; text-align: center; color: #e8ecf1; box-shadow: 0 10px 34px rgba(0,0,0,.22); }
+  .casino-card h3 { color: #FFD54A; font-size: 19px; margin: 0 0 4px; padding: 0; border: none; }
+  .casino-card p { color: #9aa3ad; font-size: 14px; margin-bottom: 14px; }
+  .casino-card .result { min-height: 26px; color: #FFD54A; font-weight: 700; font-size: 16px; margin: 12px 0 4px; }
+  .casino-card .result small { color: #9aa3ad; font-weight: 400; }
+  .casino-card button { cursor: pointer; border: 1px solid #e8b800; background: #FFD54A; color: #222; font-weight: 700; border-radius: 4px; padding: 11px 22px; font-size: 16px; font-family: inherit; margin-top: 6px; }
+  .casino-card button:disabled { opacity: .55; cursor: default; }
+  .slots { display: flex; justify-content: center; gap: 8px; margin: 6px 0; }
+  .slots .reel { width: 62px; height: 62px; background: #1c2534; border: 2px solid #2a3342; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 34px; }
+  .dice-face { width: 76px; height: 76px; background: #fff; color: #222; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 800; margin: 6px auto; }
+  .coin { width: 76px; height: 76px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffe082, #f5b301); color: #7a5200; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; margin: 6px auto; border: 3px solid #b97e00; }
+  .pick-row { display: flex; gap: 8px; justify-content: center; }
+  .pick-row button { padding: 9px 14px; font-size: 15px; }
+  .pick-row button.picked { background: #fff; color: #8a6d00; }
+  .earn-note { text-align: center; color: #888; font-size: 14px; margin-top: 26px; }
+  .toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); background: #0e1116; color: #FFD54A; border: 1px solid #e8b800; border-radius: 8px; padding: 12px 20px; font-weight: 700; font-size: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 50; white-space: nowrap; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="logo.jpg" alt="LiLGcoin logo">LiLGcoin</a>
+    <a href="index.html">Introduction</a>
+    <a href="index.html#buy">Get Started</a>
+    <a href="whitepaper.html">White Paper</a>
+    <a href="price.html">Price</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+    <a href="buy-lgx.html">Buy LGX</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true"><path d="M1 1h24M1 9h24M1 17h24" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <details open>
+    <summary>Introduction <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+  </details>
+  <details>
+    <summary>Resources <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+  </details>
+  <details>
+    <summary>Participate <span class="chev"></span></summary>
+    <div class="sub">
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+      <a href="community.html">Community</a>
+      <a href="game.html">LGX Coin Catch</a>
+      <a href="earn-lgx.html">Earn LGX</a>
+    </div>
+  </details>
+  <a class="direct" href="price.html">Price</a>
+  <a class="direct" href="faq.html">FAQ</a>
+</nav>
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+
+<div class="faq">
+<h1>Earn LGX</h1>
+<p>Straight from the whitepaper, Section 6 (LGX Gaming): a game where you earn LiLGcoin doing daily tasks and playing casino games. This is it — free to play, right in your browser. No wallet, no deposits, nothing to lose. Every task and every win adds to your LGX earned balance.</p>
+
+<div class="earn-balance">
+  <div class="label">Your LGX earned</div>
+  <div class="total"><span>&#8370;</span> <span id="balance">0</span></div>
+  <div class="sub">Today: <strong id="todayEarned">+0 LGX</strong> &nbsp;&middot;&nbsp; Day streak: <strong id="streak">0</strong></div>
+</div>
+
+<h2>Daily tasks</h2>
+<p>New tasks every day. Finish one, claim your LGX. Tasks reset at midnight.</p>
+<div class="task-list" id="taskList"></div>
+
+<h2>Casino games</h2>
+<p>Free spins, free rolls, free flips — every play earns. There is no way to lose your balance here: even a miss still pays a little.</p>
+<div class="casino-grid">
+  <div class="casino-card">
+    <h3>LGX Slots</h3>
+    <p>Three reels. Match all three for the jackpot.</p>
+    <div class="slots">
+      <div class="reel" id="reel0">&#8370;</div>
+      <div class="reel" id="reel1">&#9733;</div>
+      <div class="reel" id="reel2">7</div>
+    </div>
+    <div class="result" id="slotsResult">&nbsp;</div>
+    <button id="spinBtn">Spin — free</button>
+    <div class="result"><small>3 &#8370; = +75 &nbsp;&middot;&nbsp; 3 7s = +100 &nbsp;&middot;&nbsp; any 3 match = +50 &nbsp;&middot;&nbsp; any 2 match = +15 &nbsp;&middot;&nbsp; no match = +5</small></div>
+  </div>
+  <div class="casino-card">
+    <h3>Dice Roll</h3>
+    <p>Roll the die. High roll, high reward.</p>
+    <div class="dice-face" id="diceFace">?</div>
+    <div class="result" id="diceResult">&nbsp;</div>
+    <button id="diceBtn">Roll — free</button>
+    <div class="result"><small>6 = +50 &nbsp;&middot;&nbsp; 4–5 = +20 &nbsp;&middot;&nbsp; 1–3 = +5</small></div>
+  </div>
+  <div class="casino-card">
+    <h3>Coin Flip</h3>
+    <p>Call it. Heads or tails?</p>
+    <div class="coin" id="coinFace">&#8370;</div>
+    <div class="pick-row">
+      <button id="pickHeads">Heads</button>
+      <button id="pickTails">Tails</button>
+    </div>
+    <div class="result" id="coinResult">&nbsp;</div>
+    <div class="result"><small>Right call = +30 &nbsp;&middot;&nbsp; wrong call = +5</small></div>
+  </div>
+</div>
+
+<p class="earn-note">Your LGX earned balance is saved on this device only — it is in-game points, not on-chain LGX. Real LGX is bought and sold on the <a href="buy-lgx.html">Buy</a> and <a href="sell-lgx.html">Sell</a> pages. No wallet or sign-up needed to play. New here? The <a href="faq.html">FAQ</a> explains LiLGcoin, and <a href="game.html">LGX Coin Catch</a> is the first game on the site.</p>
+</div>
+<div class="toast" id="toast"></div>
+<footer>
+  <div class="footer-cols">
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Introduction:</h4>
+      <a href="individuals.html">Individuals</a>
+      <a href="businesses.html">Businesses</a>
+      <a href="developers.html">Developers</a>
+      <a href="index.html#buy">Getting started</a>
+      <a href="whitepaper.html">White Paper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources:</h4>
+      <a href="faq.html">FAQ</a> <a href="glossary.html">Glossary</a>
+      <a href="wallets.html">Choose your wallet</a>
+      <a href="accept-lgx.html">Accept LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">GitHub</a>
+      <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    </div>
+    </div>
+    <div class="footer-side">
+    <div class="footer-col">
+      <h4>Participate:</h4>
+      <a href="buy-lgx.html">Buy LGX</a>
+      <a href="sell-lgx.html">Sell LGX</a>
+      <a href="https://github.com/lilg777/lilgcoin">Development</a>
+      <a href="community.html">Community</a>
+      <a href="game.html">LGX Coin Catch</a>
+      <a href="earn-lgx.html">Earn LGX</a>
+    </div>
+    <div class="footer-col">
+      <h4>Other:</h4>
+      <a href="price.html">Price</a>
+      <a href="index.html">About LiLGcoin</a>
+      <a href="mailto:lilgcoinx@gmail.com">Contact</a>
+      <a href="index.html#follow">Follow LiLGcoin</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="data-links">
+    <a href="https://bscscan.com/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">BscScan</a>
+    <a href="https://coinbrain.com/coins/bnb-0xbec041bc90cae81596df063c3eee4e858fc3903d">Coinbrain</a>
+    <a href="https://www.geckoterminal.com/bsc/tokens/0xbec041bc90cae81596df063c3eee4e858fc3903d">GeckoTerminal</a>
+    <a href="https://www.youcaiwang.com/bnb/0xbec041bc90cae81596df063c3eee4e858fc3903d">有财网</a>
+    <a href="https://explorer.bitquery.io/bsc/token/0xbec041bc90cae81596df063c3eee4e858fc3903d">Bitquery</a>
+  </div>
+  <p>© LiLGcoin Project 2021-2026</p>
+</footer>
+<script>
+(function () {
+  var balanceEl = document.getElementById('balance');
+  var todayEl = document.getElementById('todayEarned');
+  var streakEl = document.getElementById('streak');
+  var toastEl = document.getElementById('toast');
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem('lgxEarn') || '{}'); } catch (e) { store = {}; }
+  function todayKey() {
+    var d = new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+  function yesterdayKey() {
+    var d = new Date(); d.setDate(d.getDate() - 1);
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+  if (typeof store.balance !== 'number') store.balance = 0;
+  if (store.todayDate !== todayKey()) {
+    store.todayDate = todayKey();
+    store.todayEarned = 0;
+    store.tasksDone = {};
+  }
+  if (!store.tasksDone) store.tasksDone = {};
+  if (typeof store.todayEarned !== 'number') store.todayEarned = 0;
+  if (typeof store.streak !== 'number') store.streak = 0;
+  if (typeof store.lastCheckin !== 'string') store.lastCheckin = '';
+  function save() {
+    try { localStorage.setItem('lgxEarn', JSON.stringify(store)); } catch (e) {}
+  }
+  function render() {
+    balanceEl.textContent = store.balance.toLocaleString();
+    todayEl.textContent = '+' + store.todayEarned.toLocaleString() + ' LGX';
+    streakEl.textContent = store.streak;
+  }
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
+  }
+  function award(n, msg) {
+    store.balance += n;
+    store.todayEarned += n;
+    save(); render();
+    toast('+' + n + ' LGX — ' + msg);
+  }
+
+  var TASKS = [
+    { id: 'checkin', icon: '📅', name: 'Daily check-in', desc: 'Come back every day and claim your bonus.', reward: 25, action: 'claim' },
+    { id: 'catch', icon: '👛', name: 'Play LGX Coin Catch', desc: 'Play a round of the first LGX game.', reward: 10, action: 'go', href: 'game.html' },
+    { id: 'price', icon: '📈', name: 'Check the live LGX price', desc: 'See what LGX is trading at right now.', reward: 10, action: 'go', href: 'price.html' },
+    { id: 'whitepaper', icon: '📄', name: 'Read the Whitepaper', desc: 'The 2021 plan — Section 6 is where this game comes from.', reward: 15, action: 'go', href: 'whitepaper.html' },
+    { id: 'community', icon: '👥', name: 'Visit the Community', desc: 'See where the LGX community hangs out.', reward: 10, action: 'go', href: 'community.html' },
+    { id: 'faq', icon: '❓', name: 'Read the FAQ', desc: 'New to LiLGcoin? Start here.', reward: 10, action: 'go', href: 'faq.html' }
+  ];
+  var listEl = document.getElementById('taskList');
+  TASKS.forEach(function (t) {
+    var done = !!store.tasksDone[t.id];
+    var row = document.createElement('div');
+    row.className = 'task' + (done ? ' done' : '');
+    var btnLabel = done ? 'Done ✓' : (t.action === 'claim' ? 'Claim' : 'Go');
+    row.innerHTML = '<div class="icon">' + t.icon + '</div>' +
+      '<div class="body"><div class="name">' + t.name + '</div><div class="desc">' + t.desc + '</div></div>' +
+      '<div class="reward">+' + t.reward + ' LGX</div>';
+    var btn = document.createElement('button');
+    btn.textContent = btnLabel;
+    btn.disabled = done;
+    if (t.action === 'go') btn.classList.add('go');
+    btn.addEventListener('click', function () {
+      if (store.tasksDone[t.id]) return;
+      store.tasksDone[t.id] = true;
+      if (t.id === 'checkin') {
+        if (store.lastCheckin === yesterdayKey()) store.streak += 1;
+        else if (store.lastCheckin !== todayKey()) store.streak = 1;
+        store.lastCheckin = todayKey();
+      }
+      award(t.reward, t.name);
+      row.classList.add('done');
+      btn.textContent = 'Done ✓';
+      btn.disabled = true;
+      if (t.action === 'go') {
+        setTimeout(function () { window.location.href = t.href; }, 700);
+      }
+    });
+    row.appendChild(btn);
+    listEl.appendChild(row);
+  });
+
+  var SYMBOLS = ['\u20B2', '\u2605', '\u25C6', '\u2665', '7'];
+  var spinBtn = document.getElementById('spinBtn');
+  var slotsResult = document.getElementById('slotsResult');
+  spinBtn.addEventListener('click', function () {
+    spinBtn.disabled = true;
+    var reels = [0, 1, 2].map(function (i) { return document.getElementById('reel' + i); });
+    var spins = 0;
+    var final = [0, 1, 2].map(function () { return SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]; });
+    var iv = setInterval(function () {
+      spins++;
+      reels.forEach(function (r) { r.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]; });
+      if (spins >= 10) {
+        clearInterval(iv);
+        reels.forEach(function (r, i) { r.textContent = final[i]; });
+        var win;
+        if (final[0] === final[1] && final[1] === final[2]) {
+          win = final[0] === '7' ? 100 : (final[0] === '\u20B2' ? 75 : 50);
+          slotsResult.textContent = 'Jackpot! Three ' + final[0] + 's — +' + win + ' LGX';
+        } else if (final[0] === final[1] || final[1] === final[2] || final[0] === final[2]) {
+          win = 15;
+          slotsResult.textContent = 'Two match — +' + win + ' LGX';
+        } else {
+          win = 5;
+          slotsResult.textContent = 'No match — still +5 LGX for playing';
+        }
+        award(win, 'LGX Slots');
+        spinBtn.disabled = false;
+      }
+    }, 70);
+  });
+
+  var diceBtn = document.getElementById('diceBtn');
+  var diceFace = document.getElementById('diceFace');
+  var diceResult = document.getElementById('diceResult');
+  diceBtn.addEventListener('click', function () {
+    diceBtn.disabled = true;
+    var ticks = 0;
+    var iv = setInterval(function () {
+      ticks++;
+      diceFace.textContent = 1 + Math.floor(Math.random() * 6);
+      if (ticks >= 8) {
+        clearInterval(iv);
+        var roll = 1 + Math.floor(Math.random() * 6);
+        diceFace.textContent = roll;
+        var win, msg;
+        if (roll === 6) { win = 50; msg = 'Six! +50 LGX'; }
+        else if (roll >= 4) { win = 20; msg = 'Rolled a ' + roll + ' — +20 LGX'; }
+        else { win = 5; msg = 'Rolled a ' + roll + ' — still +5 LGX'; }
+        diceResult.textContent = msg;
+        award(win, 'Dice Roll');
+        diceBtn.disabled = false;
+      }
+    }, 70);
+  });
+
+  var coinFace = document.getElementById('coinFace');
+  var coinResult = document.getElementById('coinResult');
+  var pick = null;
+  var headsBtn = document.getElementById('pickHeads');
+  var tailsBtn = document.getElementById('pickTails');
+  function flip(choice) {
+    pick = choice;
+    headsBtn.classList.toggle('picked', choice === 'H');
+    tailsBtn.classList.toggle('picked', choice === 'T');
+    headsBtn.disabled = true; tailsBtn.disabled = true;
+    var flips = 0;
+    var iv = setInterval(function () {
+      flips++;
+      coinFace.textContent = Math.random() < 0.5 ? 'H' : 'T';
+      if (flips >= 9) {
+        clearInterval(iv);
+        var landed = Math.random() < 0.5 ? 'H' : 'T';
+        coinFace.textContent = landed;
+        var right = landed === choice;
+        var win = right ? 30 : 5;
+        coinResult.textContent = (landed === 'H' ? 'Heads' : 'Tails') + ' — ' + (right ? 'you called it! +30 LGX' : 'wrong call — still +5 LGX');
+        award(win, 'Coin Flip');
+        headsBtn.disabled = false; tailsBtn.disabled = false;
+        headsBtn.classList.remove('picked'); tailsBtn.classList.remove('picked');
+      }
+    }, 80);
+  }
+  headsBtn.addEventListener('click', function () { flip('H'); });
+  tailsBtn.addEventListener('click', function () { flip('T'); });
+
+  render();
+  save();
+})();
+</script>
+</body>
+</html>
